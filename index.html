@@ -33,9 +33,9 @@ body{
 }
 /* ao clicar: troca pro segundo desenho do gato */
 html.clicking,html.clicking *{cursor:url("assets/cursor-2.png") 3 2,auto!important;cursor:-webkit-image-set(url("assets/cursor-2.png") 1x,url("assets/cursor-2@2x.png") 2x) 3 2,auto!important}
-/* sobre links e botões: mãozinha pequena, branca com contorno preto */
+/* sobre links e botões: a mãozinha padrão do sistema (no Mac/iPhone é a da Apple) */
 a,button,.yt,a *,button *,
-html.clicking a,html.clicking button,html.clicking a *,html.clicking button *,html.clicking .yt,html.clicking .yt *{cursor:url("assets/cursor-mao.png") 7 1,pointer!important;cursor:-webkit-image-set(url("assets/cursor-mao.png") 1x,url("assets/cursor-mao@2x.png") 2x) 7 1,pointer!important}
+html.clicking a,html.clicking button,html.clicking a *,html.clicking button *,html.clicking .yt,html.clicking .yt *{cursor:pointer!important}
 img{display:block;max-width:100%;height:auto}
 a{color:inherit;text-decoration:none}
 :focus-visible{outline:2px solid var(--red);outline-offset:4px}
@@ -78,7 +78,7 @@ a{color:inherit;text-decoration:none}
 .platforms ul{list-style:none;margin:0;padding:0;display:flex;justify-content:center;flex-wrap:nowrap;gap:clamp(10px,4vw,56px)}
 .platforms a{display:flex;flex-direction:column;align-items:center;gap:10px;transition:transform .3s cubic-bezier(.2,.7,.2,1)}
 .platforms svg{width:28px;height:28px;fill:var(--red)}
-.platforms b{font-weight:700;font-size:10px;letter-spacing:.24em;color:#fff;text-shadow:-1px -1px 0 #000,1px -1px 0 #000,-1px 1px 0 #000,1px 1px 0 #000}
+.platforms b{font-weight:700;font-size:10px;letter-spacing:.24em;color:var(--red);text-shadow:none}
 .platforms a:hover,.platforms a:focus-visible{transform:scale(1.12)}
 
 /* Discografia */
