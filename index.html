@@ -8,7 +8,11 @@
 <meta name="theme-color" content="#000000">
 <meta property="og:title" content="NOAHS">
 <meta property="og:description" content="New songs in 2027 — Novas músicas em 2027">
-<meta property="og:image" content="assets/noahs-ao-vivo.jpg">
+<meta property="og:image" content="https://www.noahs.com.br/assets/noahs-ao-vivo.jpg">
+<meta property="og:url" content="https://www.noahs.com.br/">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://www.noahs.com.br/">
 <link rel="icon" href="assets/noahs-logo.svg" type="image/svg+xml">
 <link rel="preload" href="assets/noahs-ao-vivo.jpg" as="image">
 <style>
@@ -27,9 +31,11 @@ body{
   font-family:var(--sans);font-size:16px;line-height:1.4;
   overflow-x:hidden;cursor:url("assets/cursor-1.png") 3 2,auto;cursor:-webkit-image-set(url("assets/cursor-1.png") 1x,url("assets/cursor-1@2x.png") 2x) 3 2,auto;
 }
-a,button,.yt{cursor:url("assets/cursor-1.png") 3 2,pointer;cursor:-webkit-image-set(url("assets/cursor-1.png") 1x,url("assets/cursor-1@2x.png") 2x) 3 2,pointer}
-/* ao clicar: troca pro segundo desenho */
-html.clicking,html.clicking *{cursor:url("assets/cursor-2.png") 3 2,pointer!important;cursor:-webkit-image-set(url("assets/cursor-2.png") 1x,url("assets/cursor-2@2x.png") 2x) 3 2,pointer!important}
+/* ao clicar: troca pro segundo desenho do gato */
+html.clicking,html.clicking *{cursor:url("assets/cursor-2.png") 3 2,auto!important;cursor:-webkit-image-set(url("assets/cursor-2.png") 1x,url("assets/cursor-2@2x.png") 2x) 3 2,auto!important}
+/* sobre links e botões: mãozinha pequena, branca com contorno preto */
+a,button,.yt,a *,button *,
+html.clicking a,html.clicking button,html.clicking a *,html.clicking button *,html.clicking .yt,html.clicking .yt *{cursor:url("assets/cursor-mao.png") 7 1,pointer!important;cursor:-webkit-image-set(url("assets/cursor-mao.png") 1x,url("assets/cursor-mao@2x.png") 2x) 7 1,pointer!important}
 img{display:block;max-width:100%;height:auto}
 a{color:inherit;text-decoration:none}
 :focus-visible{outline:2px solid var(--red);outline-offset:4px}
@@ -37,11 +43,11 @@ a{color:inherit;text-decoration:none}
 
 /* ——— Foto fixa (fica parada enquanto a página rola por cima) ——— */
 .backdrop{position:fixed;inset:0;height:100vh;height:100lvh;z-index:-1;background:#000}
-.backdrop img{width:100%;height:100%;object-fit:cover;object-position:50% 62%}
+.backdrop img{width:100%;height:100%;object-fit:cover;object-position:50% 55%}
 
 /* ——— Abertura ——— */
 .hero{
-  position:relative;min-height:calc(100vh - 44px);min-height:calc(100svh - 44px);
+  position:relative;height:var(--hero-h,62vh);
   display:flex;flex-direction:column;justify-content:flex-start;
   padding:0 var(--pad);
   background:transparent;
@@ -58,7 +64,8 @@ a{color:inherit;text-decoration:none}
   font-size:clamp(16px,1.9vw,24px);line-height:1;white-space:nowrap;letter-spacing:.02em;
   padding:.55em 0 .5em;
 }
-.ticker i{font-style:normal;display:inline-block;padding:0 .6em}
+.ticker i{font-style:normal;display:inline-block;padding:0 .9em}
+.ticker b{display:inline-block;width:.32em;height:.32em;border-radius:50%;background:#000;vertical-align:.2em}
 @keyframes marquee{to{transform:translateX(-50%)}}
 
 /* ——— Blocos de conteúdo ——— */
@@ -67,15 +74,15 @@ a{color:inherit;text-decoration:none}
 .label{margin:0 0 clamp(20px,2.4vw,32px);font-size:11px;font-weight:700;letter-spacing:.24em;text-transform:uppercase;color:rgba(255,255,255,.6)}
 
 /* Plataformas */
-.platforms{padding:clamp(28px,3.4vw,44px) 0 0;text-align:center;text-shadow:0 1px 8px rgba(0,0,0,.6)}
-.platforms ul{list-style:none;margin:0;padding:0;display:flex;justify-content:center;flex-wrap:wrap;gap:clamp(28px,5vw,64px)}
+.platforms{position:absolute;left:0;right:0;top:var(--plat-top,32vh);text-align:center;text-shadow:none}
+.platforms ul{list-style:none;margin:0;padding:0;display:flex;justify-content:center;flex-wrap:nowrap;gap:clamp(10px,4vw,56px)}
 .platforms a{display:flex;flex-direction:column;align-items:center;gap:10px;transition:transform .3s cubic-bezier(.2,.7,.2,1)}
-.platforms svg{width:28px;height:28px;fill:var(--red);filter:drop-shadow(0 1px 6px rgba(0,0,0,.5))}
-.platforms b{font-weight:700;font-size:10px;letter-spacing:.24em}
+.platforms svg{width:28px;height:28px;fill:var(--red)}
+.platforms b{font-weight:700;font-size:10px;letter-spacing:.24em;color:#fff;text-shadow:-1px -1px 0 #000,1px -1px 0 #000,-1px 1px 0 #000,1px 1px 0 #000}
 .platforms a:hover,.platforms a:focus-visible{transform:scale(1.12)}
 
 /* Discografia */
-.disco{padding:clamp(24px,4vw,48px) 0 clamp(64px,8vw,112px)}
+.disco{padding:0 0 clamp(64px,8vw,112px)}
 .releases{display:flex;justify-content:center;flex-wrap:wrap;gap:clamp(24px,4vw,56px)}
 .release{width:min(320px,100%)}
 .release figure{margin:0}
@@ -91,7 +98,7 @@ a{color:inherit;text-decoration:none}
 .listen:hover svg{transform:translateX(6px)}
 
 /* Vídeos */
-.videos{padding-bottom:clamp(64px,8vw,112px)}
+.videos{padding-bottom:clamp(56px,7vw,96px)}
 .video-stack{display:grid;gap:clamp(24px,3.5vw,48px);max-width:960px;margin:0 auto}
 .yt{position:relative;aspect-ratio:16/9;background:#0d0d0d;overflow:hidden;width:100%;border:0;padding:0;display:block}
 .yt img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .6s ease,opacity .3s}
@@ -105,42 +112,120 @@ a{color:inherit;text-decoration:none}
 /* Camisetas */
 .merch{background:transparent;color:#fff;padding:clamp(56px,7vw,96px) 0}
 
-.shirts{display:grid;grid-template-columns:1fr 1.75fr;align-items:stretch;gap:clamp(20px,4vw,48px);max-width:900px;margin:0 auto}
-.shirt{margin:0;text-align:center;display:flex;flex-direction:column}
+.shirts{display:flex;flex-wrap:wrap;justify-content:center;align-items:flex-end;gap:clamp(28px,3.4vw,56px) clamp(20px,3vw,48px);max-width:1240px;margin:0 auto}
+.shirt{margin:0;text-align:center;display:flex;flex-direction:column;align-items:center}
 .sold{
   display:block;font-family:Arial,sans-serif;font-style:italic;font-weight:700;
   color:var(--red);text-transform:uppercase;letter-spacing:.04em;
-  font-size:clamp(16px,1.8vw,22px);margin-bottom:8px;
+  font-size:clamp(16px,1.8vw,22px);margin-bottom:10px;
 }
-.shirt-img{flex:1;display:flex;align-items:center;justify-content:center;padding:4% 2%}
-.shirt-img img{width:100%;height:auto;transition:transform .5s cubic-bezier(.2,.7,.2,1)}
-.shirt:hover .shirt-img img{transform:scale(1.04)}
+.shirt-img{display:flex;align-items:flex-end;justify-content:center}
+.shirt-img img{height:var(--shirt-h,clamp(130px,11.5vw,180px));width:auto;max-width:none;transition:transform .5s cubic-bezier(.2,.7,.2,1)}
+.shirt-img img{position:relative;will-change:transform}
+.shirt:hover .shirt-img img,.shirt-img img:hover{transform:scale(1.1);z-index:2}
+.shirt--wide .shirt-img img{height:calc(var(--shirt-h,clamp(130px,11.5vw,180px))*1.06)}
 
-/* Shows — janela final pra foto */
-.shows{
-  min-height:70vh;min-height:70svh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;
-  background:transparent;padding:clamp(64px,8vw,112px) 0;text-shadow:0 1px 10px rgba(0,0,0,.7);
+/* Shows */
+.shows{background:transparent;padding:clamp(64px,8vw,112px) 0;text-align:center;text-shadow:0 1px 10px rgba(0,0,0,.7)}
+.shows h2{margin:0 0 18px;font-family:Arial,sans-serif;font-weight:700;font-size:clamp(22px,2.6vw,32px);letter-spacing:.14em}
+.gigs{list-style:none;margin:0 auto;padding:0;max-width:980px;border:1px solid rgba(255,255,255,.85);text-shadow:0 1px 8px rgba(0,0,0,.6);background:transparent;text-align:left}
+.gig{display:grid;grid-template-columns:110px 1.6fr 1fr 1fr auto;align-items:center;gap:18px;padding:18px 22px;
+  font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase}
+.gig+.gig{border-top:1px solid rgba(255,255,255,.85)}
+.gig time{color:var(--red)}
+.gig .venue,.gig .city{font-weight:400;color:rgba(255,255,255,.85)}
+.tix{border:1.5px solid #fff;background:transparent;color:#fff;font:700 10px/1 var(--sans);letter-spacing:.2em;padding:11px 16px;text-transform:uppercase;transition:background .2s,color .2s,border-color .2s}
+.shows .soon{margin:20px 0 0;font-size:10px;font-weight:700;letter-spacing:.3em;text-transform:uppercase;color:var(--red)}
+.gig .done{font-size:10px;font-weight:700;letter-spacing:.2em;color:rgba(255,255,255,.6);text-align:right}
+.gig--soon{display:block;text-align:center;color:#fff;letter-spacing:.3em;padding:18px 22px;font-size:11px;font-weight:700}
+.tix:hover,.tix:focus-visible{background:var(--red);border-color:var(--red);color:#000}
+
+footer{background:#000;color:var(--red);padding:clamp(32px,4vw,48px) 0 calc(22px + env(safe-area-inset-bottom));text-shadow:none}
+.foot-grid{display:grid;grid-template-columns:auto auto 1fr;gap:28px clamp(40px,6vw,96px);align-items:start}
+.foot-contact p{margin:0 0 8px;font-size:10px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.85)}
+.foot-contact a{display:block;width:max-content;font-size:13px;font-weight:700;letter-spacing:.12em;color:var(--red);padding:2px 0;transition:color .2s}
+.foot-contact a:hover{color:#fff}
+.foot-contact .en{display:block;margin-top:3px;color:rgba(255,255,255,.6)}
+.foot-links{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,max-content);gap:10px 36px}
+.foot-links a{display:inline-flex;align-items:center;gap:9px;font-size:11px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--red);transition:color .2s}
+.foot-links a:hover{color:#fff}
+.foot-links svg{width:16px;height:16px;fill:currentColor;flex:none}
+.flogo-wrap{justify-self:end;align-self:center;margin-right:clamp(24px,7vw,120px);perspective:700px}
+.flogo{width:clamp(150px,15vw,210px);height:auto;display:block}.flogo path{fill:var(--red)}
+.flogo-spin{position:relative;display:inline-block;animation:spinY 5s linear infinite}
+.flogo-reg{position:absolute;top:-.2em;right:-.85em;font-size:clamp(13px,1.2vw,17px);font-weight:700;color:var(--red);line-height:1}
+.reg{font-size:.85em;margin-left:2px;vertical-align:.35em;color:#fff}
+@keyframes spinY{to{transform:rotateY(360deg)}}
+.foot-meta{margin-top:clamp(26px,3vw,36px);text-align:center;font-size:10px;font-weight:700;letter-spacing:.24em;text-transform:uppercase;color:#fff}
+@media (max-width:900px){
+  .foot-grid{grid-template-columns:1fr auto}
+  .foot-links{grid-row:2;grid-column:1 / -1}
+  .flogo-wrap{grid-row:1;grid-column:2}
+  .flogo{width:130px}
+  .flogo-wrap{justify-self:end;margin-right:28px}
 }
-.shows h2{margin:0;font-family:Arial,sans-serif;font-weight:700;font-size:clamp(22px,2.6vw,32px);letter-spacing:.14em}
-.shows p{margin:10px 0 0;font-size:10px;font-weight:700;letter-spacing:.3em;text-transform:uppercase;color:var(--red)}
+@media (max-width:480px){
+  .foot-grid{grid-template-columns:1fr}
+  .flogo-wrap{grid-row:auto;grid-column:auto;justify-self:center;margin:6px 0 0}
+  .foot-contact a{font-size:13px}
+  .foot-contact p{font-size:11px;letter-spacing:.1em}
+  .foot-links{gap:12px 28px}
+  .foot-links a{font-size:11px;letter-spacing:.14em}
+  .foot-meta{font-size:10px;letter-spacing:.14em}
+}
 
-footer{background:transparent;text-shadow:0 1px 8px rgba(0,0,0,.7);padding:36px 0 calc(36px + env(safe-area-inset-bottom))}
-footer .wrap{display:flex;flex-direction:column;align-items:center;gap:14px;text-align:center;
-  font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.55)}
-footer svg{width:80px;height:auto}
-footer svg path{fill:var(--red)}
+/* Galeria de fotos: menores, soltas na composição */
+.gallery{position:relative;max-width:var(--max);margin:0 auto;padding:0 var(--pad) clamp(64px,8vw,112px)}
+.g-track{display:flex;align-items:flex-start;gap:clamp(18px,2.6vw,40px);overflow-x:auto;scroll-behavior:smooth;
+  padding:0 clamp(48px,6vw,80px);scrollbar-width:none;-webkit-overflow-scrolling:touch;--k:.72;padding-top:18px;padding-bottom:18px}
+.g-track::-webkit-scrollbar{display:none}
+.g-track img{height:calc(var(--h)*var(--k)*1px);margin-top:calc(var(--o)*var(--k)*1px);width:auto;max-width:none;flex:none;object-fit:cover;transition:transform .45s cubic-bezier(.2,.7,.2,1);position:relative}
+@media (hover:hover){.g-track img:hover{transform:scale(1.05);z-index:1}}
+.g-btn{position:absolute;top:calc(50% - clamp(32px,4vw,56px));transform:translateY(-50%);width:44px;height:44px;border-radius:50%;border:0;
+  background:rgba(225,225,225,.92);color:#000;display:grid;place-items:center;transition:transform .25s ease,opacity .25s;z-index:2}
+.g-btn svg{width:14px;height:14px;fill:none;stroke:currentColor;stroke-width:2.4}
+.g-btn:hover{transform:translateY(-50%) scale(1.08)}
+.g-btn[disabled]{opacity:0;pointer-events:none}
+.g-prev{left:var(--pad)}.g-next{right:var(--pad)}
+
+/* Cadastro de e-mail */
+.signup{padding:0 0 clamp(48px,6vw,80px);text-align:center;text-shadow:0 1px 8px rgba(0,0,0,.6)}
+.signup p{margin:0 0 14px;font-size:10px;font-weight:700;letter-spacing:.26em;text-transform:uppercase}
+.signup form{position:relative;display:flex;max-width:420px;margin:0 auto;border:1px solid rgba(255,255,255,.85);background:rgba(0,0,0,.35)}
+.signup input{flex:1;min-width:0;background:transparent;border:0;color:#fff;font:700 12px/1 var(--sans);letter-spacing:.16em;padding:16px 18px;text-transform:uppercase}
+.signup input::placeholder{color:rgba(255,255,255,.7)}
+.signup input:focus{outline:none}
+.signup form:focus-within{border-color:var(--red)}
+.signup button{border:0;background:transparent;color:#fff;padding:0 18px;display:grid;place-items:center}
+.signup button svg{width:24px;height:10px;fill:none;stroke:currentColor;stroke-width:1.6;transition:transform .3s ease}
+.signup button:hover{color:var(--red)}.signup button:hover svg{transform:translateX(5px)}
+.signup .consent{margin:4px auto 0;max-width:420px;font-size:9px;font-weight:400;letter-spacing:.12em;line-height:1.6;color:rgba(255,255,255,.75)}
+.signup button[disabled]{opacity:.5}
+.signup .msg{min-height:1.4em;margin-top:12px;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--red)}
+
+/* textos vermelhos legíveis sobre as luzes do palco */
+.gig time{text-shadow:0 0 10px #000,0 0 3px #000}
+.sold{text-shadow:none;background:none;padding:0;color:var(--red)}
+.shows .soon{text-shadow:none;background:#000;display:inline-block;padding:6px 12px}
 
 /* ——— Celular ——— */
 @media (max-width:720px){
-  .backdrop img{object-position:52% 60%}
+  .backdrop img{object-position:50% 55%}
   .release{width:min(300px,100%)}
-  .shirts{grid-template-columns:1fr;gap:40px}
-  .shirt:hover .shirt-img img{transform:none}
+  .platforms .wrap{padding:0 12px}
+  .platforms svg{width:22px;height:22px}
+  .platforms b{font-size:7px;letter-spacing:.08em;white-space:nowrap}
+  .g-btn{width:38px;height:38px}
+  .g-track{--k:.52;padding:0 44px}
+  .shirts{--shirt-h:135px;gap:32px 14px}
+  .gig{grid-template-columns:1fr auto;gap:6px 14px;padding:16px}
+  .gig time{grid-column:1}.gig .event{grid-column:1}.gig .venue,.gig .city{grid-column:1;font-size:10px}
+  .gig .tix,.gig .done{grid-column:2;grid-row:1 / span 4}
 }
 @media (hover:none){body,a,button,.yt{cursor:auto}}
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
-  .ticker-track{animation:none}
+  .ticker-track,.flogo-spin{animation:none}
   *{transition:none!important}
 }
 </style>
@@ -149,7 +234,7 @@ footer svg path{fill:var(--red)}
 
 <div class="ticker" role="marquee" aria-label="New songs in 2027 — Novas músicas em 2027">
   <div class="ticker-track" aria-hidden="true">
-    <span><i>NEW SONGS IN 2027</i>—<i>NOVAS MÚSICAS EM 2027</i>—</span><span><i>NEW SONGS IN 2027</i>—<i>NOVAS MÚSICAS EM 2027</i>—</span><span><i>NEW SONGS IN 2027</i>—<i>NOVAS MÚSICAS EM 2027</i>—</span><span><i>NEW SONGS IN 2027</i>—<i>NOVAS MÚSICAS EM 2027</i>—</span><span><i>NEW SONGS IN 2027</i>—<i>NOVAS MÚSICAS EM 2027</i>—</span><span><i>NEW SONGS IN 2027</i>—<i>NOVAS MÚSICAS EM 2027</i>—</span>
+    <span><i>NEW SONGS IN 2027</i><b></b><i>NOVAS MÚSICAS EM 2027</i><b></b></span><span><i>NEW SONGS IN 2027</i><b></b><i>NOVAS MÚSICAS EM 2027</i><b></b></span><span><i>NEW SONGS IN 2027</i><b></b><i>NOVAS MÚSICAS EM 2027</i><b></b></span><span><i>NEW SONGS IN 2027</i><b></b><i>NOVAS MÚSICAS EM 2027</i><b></b></span><span><i>NEW SONGS IN 2027</i><b></b><i>NOVAS MÚSICAS EM 2027</i><b></b></span><span><i>NEW SONGS IN 2027</i><b></b><i>NOVAS MÚSICAS EM 2027</i><b></b></span>
   </div>
 </div>
 
@@ -162,21 +247,33 @@ footer svg path{fill:var(--red)}
   <section class="platforms" aria-label="Ouça e siga">
     <div class="wrap">
       <ul>
-        <li><a href="https://open.spotify.com/intl-pt/artist/5uyTOzG8fzS316eTcOvfgp" target="_blank" rel="noopener">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg><b>SPOTIFY</b></a></li>
-        <li><a href="https://www.instagram.com/noahstheband/" target="_blank" rel="noopener">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7.0301.084c-1.2768.0602-2.1487.264-2.911.5634-.7888.3075-1.4575.72-2.1228 1.3877-.6652.6677-1.075 1.3368-1.3802 2.127-.2954.7638-.4956 1.6365-.552 2.914-.0564 1.2775-.0689 1.6882-.0626 4.947.0062 3.2586.0206 3.6671.0825 4.9473.061 1.2765.264 2.1482.5635 2.9107.308.7889.72 1.4573 1.388 2.1228.6679.6655 1.3365 1.0743 2.1285 1.38.7632.295 1.6361.4961 2.9134.552 1.2773.056 1.6884.069 4.9462.0627 3.2578-.0062 3.668-.0207 4.9478-.0814 1.28-.0607 2.147-.2652 2.9098-.5633.7889-.3086 1.4578-.72 2.1228-1.3881.665-.6682 1.0745-1.3378 1.3795-2.1284.2957-.7632.4966-1.636.552-2.9124.056-1.2809.0692-1.6898.063-4.948-.0063-3.2583-.021-3.6668-.0817-4.9465-.0607-1.2797-.264-2.1487-.5633-2.9117-.3084-.7889-.72-1.4568-1.3876-2.1228C21.2982 1.33 20.628.9208 19.8378.6165 19.074.321 18.2017.1197 16.9244.0645 15.6471.0093 15.236-.005 11.977.0014 8.718.0076 8.31.0215 7.0301.0839m.1402 21.6932c-1.17-.0509-1.8053-.2453-2.2287-.408-.5606-.216-.96-.4771-1.3819-.895-.422-.4178-.6811-.8186-.9-1.378-.1644-.4234-.3624-1.058-.4171-2.228-.0595-1.2645-.072-1.6442-.079-4.848-.007-3.2037.0053-3.583.0607-4.848.05-1.169.2456-1.805.408-2.2282.216-.5613.4762-.96.895-1.3816.4188-.4217.8184-.6814 1.3783-.9003.423-.1651 1.0575-.3614 2.227-.4171 1.2655-.06 1.6447-.072 4.848-.079 3.2033-.007 3.5835.005 4.8495.0608 1.169.0508 1.8053.2445 2.228.408.5608.216.96.4754 1.3816.895.4217.4194.6816.8176.9005 1.3787.1653.4217.3617 1.056.4169 2.2263.0602 1.2655.0739 1.645.0796 4.848.0058 3.203-.0055 3.5834-.061 4.848-.051 1.17-.245 1.8055-.408 2.2294-.216.5604-.4763.96-.8954 1.3814-.419.4215-.8181.6811-1.3783.9-.4224.1649-1.0577.3617-2.2262.4174-1.2656.0595-1.6448.072-4.8493.079-3.2045.007-3.5825-.006-4.848-.0608M16.953 5.5864A1.44 1.44 0 1 0 18.39 4.144a1.44 1.44 0 0 0-1.437 1.4424M5.8385 12.012c.0067 3.4032 2.7706 6.1557 6.173 6.1493 3.4026-.0065 6.157-2.7701 6.1506-6.1733-.0065-3.4032-2.771-6.1565-6.174-6.1498-3.403.0067-6.156 2.771-6.1496 6.1738M8 12.0077a4 4 0 1 1 4.008 3.9921A3.9996 3.9996 0 0 1 8 12.0077"/></svg><b>INSTAGRAM</b></a></li>
-        <li><a href="https://music.apple.com/br/artist/noahs/1168741801" target="_blank" rel="noopener">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M23.994 6.124a9.23 9.23 0 00-.24-2.19c-.317-1.31-1.062-2.31-2.18-3.043a5.022 5.022 0 00-1.877-.726 10.496 10.496 0 00-1.564-.15c-.04-.003-.083-.01-.124-.013H5.986c-.152.01-.303.017-.455.026-.747.043-1.49.123-2.193.4-1.336.53-2.3 1.452-2.865 2.78-.192.448-.292.925-.363 1.408-.056.392-.088.785-.1 1.18 0 .032-.007.062-.01.093v12.223c.01.14.017.283.027.424.05.815.154 1.624.497 2.373.65 1.42 1.738 2.353 3.234 2.801.42.127.856.187 1.293.228.555.053 1.11.06 1.667.06h11.03a12.5 12.5 0 001.57-.1c.822-.106 1.596-.35 2.295-.81a5.046 5.046 0 001.88-2.207c.186-.42.293-.87.37-1.324.113-.675.138-1.358.137-2.04-.002-3.8 0-7.595-.003-11.393zm-6.423 3.99v5.712c0 .417-.058.827-.244 1.206-.29.59-.76.962-1.388 1.14-.35.1-.706.157-1.07.173-.95.045-1.773-.6-1.943-1.536a1.88 1.88 0 011.038-2.022c.323-.16.67-.25 1.018-.324.378-.082.758-.153 1.134-.24.274-.063.457-.23.51-.516a.904.904 0 00.02-.193c0-1.815 0-3.63-.002-5.443a.725.725 0 00-.026-.185c-.04-.15-.15-.243-.304-.234-.16.01-.318.035-.475.066-.76.15-1.52.303-2.28.456l-2.325.47-1.374.278c-.016.003-.032.01-.048.013-.277.077-.377.203-.39.49-.002.042 0 .086 0 .13-.002 2.602 0 5.204-.003 7.805 0 .42-.047.836-.215 1.227-.278.64-.77 1.04-1.434 1.233-.35.1-.71.16-1.075.172-.96.036-1.755-.6-1.92-1.544-.14-.812.23-1.685 1.154-2.075.357-.15.73-.232 1.108-.31.287-.06.575-.116.86-.177.383-.083.583-.323.6-.714v-.15c0-2.96 0-5.922.002-8.882 0-.123.013-.25.042-.37.07-.285.273-.448.546-.518.255-.066.515-.112.774-.165.733-.15 1.466-.296 2.2-.444l2.27-.46c.67-.134 1.34-.27 2.01-.403.22-.043.442-.088.663-.106.31-.025.523.17.554.482.008.073.012.148.012.223.002 1.91.002 3.822 0 5.732z"/></svg><b>APPLE MUSIC</b></a></li>
+        <li><a href="https://open.spotify.com/intl-pt/artist/5uyTOzG8fzS316eTcOvfgp" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg><b>SPOTIFY</b></a></li>
+        <li><a href="https://www.instagram.com/noahstheband/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7.0301.084c-1.2768.0602-2.1487.264-2.911.5634-.7888.3075-1.4575.72-2.1228 1.3877-.6652.6677-1.075 1.3368-1.3802 2.127-.2954.7638-.4956 1.6365-.552 2.914-.0564 1.2775-.0689 1.6882-.0626 4.947.0062 3.2586.0206 3.6671.0825 4.9473.061 1.2765.264 2.1482.5635 2.9107.308.7889.72 1.4573 1.388 2.1228.6679.6655 1.3365 1.0743 2.1285 1.38.7632.295 1.6361.4961 2.9134.552 1.2773.056 1.6884.069 4.9462.0627 3.2578-.0062 3.668-.0207 4.9478-.0814 1.28-.0607 2.147-.2652 2.9098-.5633.7889-.3086 1.4578-.72 2.1228-1.3881.665-.6682 1.0745-1.3378 1.3795-2.1284.2957-.7632.4966-1.636.552-2.9124.056-1.2809.0692-1.6898.063-4.948-.0063-3.2583-.021-3.6668-.0817-4.9465-.0607-1.2797-.264-2.1487-.5633-2.9117-.3084-.7889-.72-1.4568-1.3876-2.1228C21.2982 1.33 20.628.9208 19.8378.6165 19.074.321 18.2017.1197 16.9244.0645 15.6471.0093 15.236-.005 11.977.0014 8.718.0076 8.31.0215 7.0301.0839m.1402 21.6932c-1.17-.0509-1.8053-.2453-2.2287-.408-.5606-.216-.96-.4771-1.3819-.895-.422-.4178-.6811-.8186-.9-1.378-.1644-.4234-.3624-1.058-.4171-2.228-.0595-1.2645-.072-1.6442-.079-4.848-.007-3.2037.0053-3.583.0607-4.848.05-1.169.2456-1.805.408-2.2282.216-.5613.4762-.96.895-1.3816.4188-.4217.8184-.6814 1.3783-.9003.423-.1651 1.0575-.3614 2.227-.4171 1.2655-.06 1.6447-.072 4.848-.079 3.2033-.007 3.5835.005 4.8495.0608 1.169.0508 1.8053.2445 2.228.408.5608.216.96.4754 1.3816.895.4217.4194.6816.8176.9005 1.3787.1653.4217.3617 1.056.4169 2.2263.0602 1.2655.0739 1.645.0796 4.848.0058 3.203-.0055 3.5834-.061 4.848-.051 1.17-.245 1.8055-.408 2.2294-.216.5604-.4763.96-.8954 1.3814-.419.4215-.8181.6811-1.3783.9-.4224.1649-1.0577.3617-2.2262.4174-1.2656.0595-1.6448.072-4.8493.079-3.2045.007-3.5825-.006-4.848-.0608M16.953 5.5864A1.44 1.44 0 1 0 18.39 4.144a1.44 1.44 0 0 0-1.437 1.4424M5.8385 12.012c.0067 3.4032 2.7706 6.1557 6.173 6.1493 3.4026-.0065 6.157-2.7701 6.1506-6.1733-.0065-3.4032-2.771-6.1565-6.174-6.1498-3.403.0067-6.156 2.771-6.1496 6.1738M8 12.0077a4 4 0 1 1 4.008 3.9921A3.9996 3.9996 0 0 1 8 12.0077"/></svg><b>INSTAGRAM</b></a></li>
+        <li><a href="https://music.apple.com/br/artist/noahs/1168741801" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M23.994 6.124a9.23 9.23 0 00-.24-2.19c-.317-1.31-1.062-2.31-2.18-3.043a5.022 5.022 0 00-1.877-.726 10.496 10.496 0 00-1.564-.15c-.04-.003-.083-.01-.124-.013H5.986c-.152.01-.303.017-.455.026-.747.043-1.49.123-2.193.4-1.336.53-2.3 1.452-2.865 2.78-.192.448-.292.925-.363 1.408-.056.392-.088.785-.1 1.18 0 .032-.007.062-.01.093v12.223c.01.14.017.283.027.424.05.815.154 1.624.497 2.373.65 1.42 1.738 2.353 3.234 2.801.42.127.856.187 1.293.228.555.053 1.11.06 1.667.06h11.03a12.5 12.5 0 001.57-.1c.822-.106 1.596-.35 2.295-.81a5.046 5.046 0 001.88-2.207c.186-.42.293-.87.37-1.324.113-.675.138-1.358.137-2.04-.002-3.8 0-7.595-.003-11.393zm-6.423 3.99v5.712c0 .417-.058.827-.244 1.206-.29.59-.76.962-1.388 1.14-.35.1-.706.157-1.07.173-.95.045-1.773-.6-1.943-1.536a1.88 1.88 0 011.038-2.022c.323-.16.67-.25 1.018-.324.378-.082.758-.153 1.134-.24.274-.063.457-.23.51-.516a.904.904 0 00.02-.193c0-1.815 0-3.63-.002-5.443a.725.725 0 00-.026-.185c-.04-.15-.15-.243-.304-.234-.16.01-.318.035-.475.066-.76.15-1.52.303-2.28.456l-2.325.47-1.374.278c-.016.003-.032.01-.048.013-.277.077-.377.203-.39.49-.002.042 0 .086 0 .13-.002 2.602 0 5.204-.003 7.805 0 .42-.047.836-.215 1.227-.278.64-.77 1.04-1.434 1.233-.35.1-.71.16-1.075.172-.96.036-1.755-.6-1.92-1.544-.14-.812.23-1.685 1.154-2.075.357-.15.73-.232 1.108-.31.287-.06.575-.116.86-.177.383-.083.583-.323.6-.714v-.15c0-2.96 0-5.922.002-8.882 0-.123.013-.25.042-.37.07-.285.273-.448.546-.518.255-.066.515-.112.774-.165.733-.15 1.466-.296 2.2-.444l2.27-.46c.67-.134 1.34-.27 2.01-.403.22-.043.442-.088.663-.106.31-.025.523.17.554.482.008.073.012.148.012.223.002 1.91.002 3.822 0 5.732z"/></svg><b>APPLE MUSIC</b></a></li>
+        <li><a href="https://www.youtube.com/noahstheband" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg><b>YOUTUBE</b></a></li>
+        <li><a href="https://x.com/noahstheband" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14.234 10.162 22.977 0h-2.072l-7.591 8.824L7.251 0H.258l9.168 13.343L.258 24H2.33l8.016-9.318L16.749 24h6.993zm-2.837 3.299-.929-1.329L3.076 1.56h3.182l5.965 8.532.929 1.329 7.754 11.09h-3.182z"/></svg><b>X</b></a></li>
+        <li><a href="https://www.facebook.com/noahstheband" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9.101 23.691v-7.98H6.627v-3.667h2.474v-1.58c0-4.085 1.848-5.978 5.858-5.978.401 0 .955.042 1.468.103a8.68 8.68 0 0 1 1.141.195v3.325a8.623 8.623 0 0 0-.653-.036 26.805 26.805 0 0 0-.733-.009c-.707 0-1.259.096-1.675.309a1.686 1.686 0 0 0-.679.622c-.258.42-.374.995-.374 1.752v1.297h3.919l-.386 2.103-.287 1.564h-3.246v8.245C19.396 23.238 24 18.179 24 12.044c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.628 3.874 10.35 9.101 11.647Z"/></svg><b>FACEBOOK</b></a></li>
       </ul>
     </div>
   </section>
 </header>
 
-
-
 <main class="panel">
 
+  <section class="videos" aria-label="Vídeos">
+    <div class="wrap">
+      <div class="video-stack">
+        <button class="yt" data-id="VTD6FymWap8" aria-label="Assistir ao clipe">
+          <img src="assets/capa-clipe.jpg" alt="" loading="lazy" width="1280" height="720">
+          <span class="play"><svg viewBox="0 0 10 12" aria-hidden="true"><path d="M0 0l10 6-10 6z"/></svg></span>
+        </button>
+        <button class="yt" data-id="46-LVfX_fSc" aria-label="Assistir ao vídeo ao vivo">
+          <img src="assets/capa-ao-vivo.jpg" alt="" loading="lazy" width="1280" height="720">
+          <span class="play"><svg viewBox="0 0 10 12" aria-hidden="true"><path d="M0 0l10 6-10 6z"/></svg></span>
+        </button>
+      </div>
+    </div>
+  </section>
 
   <section class="disco" aria-labelledby="disco-t">
     <div class="wrap">
@@ -198,19 +295,23 @@ footer svg path{fill:var(--red)}
     </div>
   </section>
 
-  <section class="videos" aria-label="Vídeos">
-    <div class="wrap">
-      <div class="video-stack">
-        <button class="yt" data-id="VTD6FymWap8" aria-label="Assistir ao clipe">
-          <img src="assets/capa-clipe.jpg" alt="" loading="lazy" width="1280" height="720">
-          <span class="play"><svg viewBox="0 0 10 12" aria-hidden="true"><path d="M0 0l10 6-10 6z"/></svg></span>
-        </button>
-        <button class="yt" data-id="46-LVfX_fSc" aria-label="Assistir ao vídeo ao vivo">
-          <img src="assets/capa-ao-vivo.jpg" alt="" loading="lazy" width="1280" height="720">
-          <span class="play"><svg viewBox="0 0 10 12" aria-hidden="true"><path d="M0 0l10 6-10 6z"/></svg></span>
-        </button>
-      </div>
+  <section class="gallery" aria-label="Fotos">
+    <button class="g-btn g-prev" type="button" aria-label="Foto anterior"><svg viewBox="0 0 14 14"><path d="M9.5 1.5 4 7l5.5 5.5"/></svg></button>
+    <div class="g-track">
+      <img src="assets/foto-11.jpg" alt="NOAHS ao vivo, foto 1" width="933" height="1400" loading="lazy" style="--h:380;--o:40">
+      <img src="assets/foto-10.jpg" alt="NOAHS ao vivo, foto 2" width="1400" height="933" loading="lazy" style="--h:440;--o:0">
+      <img src="assets/foto-01.jpg" alt="NOAHS ao vivo, foto 3" width="1400" height="933" loading="lazy" style="--h:300;--o:150">
+      <img src="assets/foto-02.jpg" alt="NOAHS ao vivo, foto 4" width="933" height="1400" loading="lazy" style="--h:400;--o:60">
+      <img src="assets/foto-03.jpg" alt="NOAHS ao vivo, foto 5" width="1400" height="933" loading="lazy" style="--h:280;--o:10">
+      <img src="assets/foto-04.jpg" alt="NOAHS ao vivo, foto 6" width="933" height="1400" loading="lazy" style="--h:420;--o:110">
+      <img src="assets/foto-05.jpg" alt="NOAHS ao vivo, foto 7" width="1400" height="933" loading="lazy" style="--h:330;--o:20">
+      <img src="assets/foto-06.jpg" alt="NOAHS ao vivo, foto 8" width="933" height="1400" loading="lazy" style="--h:390;--o:90">
+      <img src="assets/foto-07.jpg" alt="NOAHS ao vivo, foto 9" width="933" height="1400" loading="lazy" style="--h:270;--o:170">
+      <img src="assets/foto-08.jpg" alt="NOAHS ao vivo, foto 10" width="933" height="1400" loading="lazy" style="--h:350;--o:0">
+      <img src="assets/foto-09.jpg" alt="NOAHS ao vivo, foto 11" width="1400" height="933" loading="lazy" style="--h:410;--o:70">
+      <img src="assets/foto-12.jpg" alt="NOAHS ao vivo, foto 12" width="1400" height="933" loading="lazy" style="--h:290;--o:130">
     </div>
+    <button class="g-btn g-next" type="button" aria-label="Próxima foto"><svg viewBox="0 0 14 14"><path d="M4.5 1.5 10 7l-5.5 5.5"/></svg></button>
   </section>
 
   <section class="merch" aria-labelledby="merch-t">
@@ -219,34 +320,118 @@ footer svg path{fill:var(--red)}
       <div class="shirts">
         <figure class="shirt">
           <span class="sold">Sold out</span>
-          <div class="shirt-img"><img src="assets/camiseta-branca.png" alt="Camiseta branca NOAHS com o gato — esgotada" loading="lazy"></div>
+          <div class="shirt-img"><img src="assets/camiseta-branca.png" alt="Camiseta cinza NOAHS com personagem e muro — esgotada" loading="lazy"></div>
         </figure>
         <figure class="shirt shirt--wide">
           <span class="sold">Sold out</span>
           <div class="shirt-img"><img src="assets/camiseta-preta.png" alt="Camiseta preta NOAHS, frente e costas — esgotada" loading="lazy"></div>
         </figure>
+        <figure class="shirt">
+          <span class="sold">Sold out</span>
+          <div class="shirt-img"><img src="assets/camiseta-montanha.png" alt="Camiseta preta NOAHS com montanhas, since 2014 — esgotada" loading="lazy"></div>
+        </figure>
+        <figure class="shirt">
+          <span class="sold">Sold out</span>
+          <div class="shirt-img"><img src="assets/camiseta-rise.png" alt="Camiseta branca NOAHS Rise — esgotada" loading="lazy"></div>
+        </figure>
       </div>
     </div>
   </section>
+
 
 </main>
 
 <section class="shows" aria-labelledby="shows-t">
   <div class="wrap">
-    <h2 id="shows-t">SHOWS</h2>
-    <p>Datas em breve</p>
+    <h2 class="sr" id="shows-t">Shows</h2>
+    <ul class="gigs">
+      <li class="gig"><time datetime="2025-12-27">27/12/2025</time><span class="event">Carcasso Fest 3</span><span class="venue">Célula Showcase</span><span class="city">Florianópolis</span><span class="done">Realizado / Played</span></li>
+      <li class="gig"><time datetime="2026-03-01">01/03/2026</time><span class="event">NOAHS + Torvelim</span><span class="venue">Desgosto</span><span class="city">Florianópolis</span><span class="done">Realizado / Played</span></li>
+      <li class="gig"><time datetime="2026-04-04">04/04/2026</time><span class="event">Desterro Autoral Festival</span><span class="venue">Av. Beira-Mar Norte</span><span class="city">Florianópolis</span><span class="done">Realizado / Played</span></li>
+      <li class="gig gig--soon">Novas datas em breve</li>
+    </ul>
+  </div>
+</section>
+
+<section class="signup" aria-labelledby="signup-t">
+  <div class="wrap">
+    <p id="signup-t">Shows - Promos - Notícias</p>
+    <form novalidate>
+      <label class="sr" for="email">Seu e-mail</label>
+      <input id="email" type="email" name="email" placeholder="Seu e-mail" autocomplete="email" required>
+        <input type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
+      <button type="submit" aria-label="Enviar"><svg viewBox="0 0 24 10" aria-hidden="true"><path d="M0 5h22M18 1l4 4-4 4"/></svg></button>
+    </form>
+    <div class="msg" role="status" aria-live="polite"></div>
+    <p class="consent">Ao se cadastrar, você aceita receber e-mails da NOAHS / By signing up you agree to receive emails from NOAHS</p>
   </div>
 </section>
 
 <footer>
   <div class="wrap">
-    <svg viewBox="206 386 1500 310" aria-hidden="true"><path d="M777.74,414.05c6.54,4.32,8.67,2.77,15.1,11.07,6.59,8.51,23.73,43.83,24.78,54.13.45,4.42-.44,8.5-.2,12.81l.46,1.1c.9.57,2.69-.54,3.69.72.6.76,5.2,14.43,5.32,15.73.3,3.26-2.76,10.2-2.69,15.38.07,5.78,2.97,12.19,2.95,17.54-.03,6.47-6.07,13.96-3.95,21.79l-6.46,2.73c.3,11.1-2.54,21.79-6.64,31.88-10.92,26.86-49.51,67.22-75.93,77.86-5.04,2.03-12.3,2.19-17.91,3.76-7.4,2.08-20.75,8.09-27.2,8.71-8.35.81-37.4.11-45.88-.95-5.29-.66-18.04-4.03-23.69-5.54-47.67-12.7-76.96-41.58-91.55-89.86-1.22-4.03-6.25-13.77-5.93-17.21.34-3.54,9.68-8.15,12.16-10.75-4.8-3.02-7.61-7.79-11.26-11.64-2.51-2.64-4.55-.53-5.48-6.98-3.8-26.6,8.68-65.59,23.47-87.49,13.44-19.88,49.2-59.87,72.58-63.79,7.4-1.24,10.12,2.58,12.71,2.45,6.96-.33,9.55-9.31,19.68-1.56,12.82,9.8-16.37,19.33-21.56,24.52-15.64,15.65-26.34,30.81-29.96,54.1-1.63,10.54-1.1,20.31-2.93,31.07-1.03,6.11-1.08,11.42-2.3,17.1-1.14,5.33-8.01,16.98-7.87,19.64.18,3.54,4.45,10.96,5.1,16.01.61,4.74-.12,9.51.36,14.25,1.04,10.39,13.95,50.31,19.52,58.63,3.91,5.82,22.99,24.22,29.06,26.32,1.64.56,3.19-.71,4.86-.33,8.76,2.02,15.96,5.01,25.52,5.67,6.08.42,21.99,2.3,22.96-5.3,1.57-12.21-.26-30.85-.08-43.96.23-16.72,1.82-34.18,1.71-50.66-.01-2.87-1.22-6.71-1.55-9.68l6.42-3.98-4.49-3.1c-.04-4.45-1.96-10.21-1.86-14.44.45-19.83-.21-39.47-.23-59.52,0-6.64,1.87-15.71,1.91-22.38.02-3.74-.79-6.44-4.68-5.37.44,2.21-.57,4.55-.58,6.52-.17,28.12,1.54,56.04,1.48,83.71-.02,6.86,3.64,10.04-5.59,13.62.01,1.62,3.11,3.2,4.37,5.2,4.15,6.62.49,20.78.28,28.87-.16,6.04.29,12.28.37,17.58.03,1.45,1.75,2.49,1.38,5.6-.71,6.01-8.62,14.81-12.93,18.8-3.03,2.81-14.8,12.08-18.05,13.37-6.5,2.58-11.92.89-11.91-7.04-3.13,1.01-4.45,3.35-8.22,3.69-5.16.47-9.26-3.2-10.27-8.31.63-37.9,1.03-75.92.76-113.89-.05-7.14,0-14.28,0-21.36,0-8.37.04-16.61-.97-24.91-5.04.4-9.36.25-13.12-3.6-1.58-6.55,3.33-8.71,3.66-10.67.39-2.29-5.37-3.84-.37-9.12,5.69-6.02,29.73-12.18,38.8-16.12,7.6-3.3,15.6-8.57,23.43-11.67,2.98-1.18,7.25-1.12,10.3-2.91,3.33-6.57-3.93-12.53,3.78-17.51,6.95-4.5,9.97,1.65,14.57,2.12,1.76.17,3.7-1.26,5.51-1.23,2.36.04,5.12,2.34,7.47,2.34,4.45,0,14.66-5.35,21.55-5.71,10.91-.57,25.49,11.35,33.72,18.46C776.41,411.41,777.16,413.67,777.74,414.05ZM715.73,434.79l.51,49.66c5.45,5.29,14.22,6.52,21.38,5.81,2.27-.23,4.62-1.65,6.77-1.8s3.98,1.36,5.98.48c2.01-1.42-.16-5.27-.8-7.03-4.69-12.87-15.42-28.82-24.46-38.86C724.08,441.92,716.69,433.65,715.73,434.79ZM713.92,551.89c1.16,3.11,2.6,8.02,2.67,11.26.06,2.82-2.6,9.79.67,10.94,4.69,1.64,10.22-4.21,16.29-2.37,1.17.35,2.26,2.02,3.23,2.11,1.77.18,8.44-2.64,12.16-2.63,4.15.01,10.08,3.99,12.24,2.13,3.89-3.33,4.48-17.09,4.17-22.07-.4-6.65-3.33-13.43-3.77-19.47-.5-7.02,2.61-11.59-1.87-18.52-4.56-7.07-14.45,1.07-21.96,1.5-7.66.45-14.41-3.14-21.94-2.86-1.78,1.64.96,17.45.89,20.81-.05,2.34-1.53,4.8-1.48,6.89C715.3,543.13,719.78,550.48,713.92,551.89ZM753.02,600.68c-2.78-1.79-5.71-.13-8.71-.09-9.7.13-19-1.93-28.17,2.83-1.56,2.42.86,5.48.6,7.21-.15.94-2,.9-2.45,1.58-1.28,1.95,2.21,8.27,2.29,11.33.17,6.43-1.97,16.01-1.88,22.35.13,9.58,7.58,2.51,11.33-.98,5.68-5.29,25.93-32.32,27.06-39.08C753.28,604.67,753.49,601.46,753.02,600.68Z"/><path d="M1352.79,682.45c-.5.45-.11,4.54-3.29,4.58-4.5.06-26.37-16.09-31.02-19.9-4.63-3.8-18.21-14.93-18.58-20.59-.39-5.96,14.37-14.24,15.32-20.66.55-3.69-1-6.33-.94-9.41.3-15.17,2.69-36.63,1.01-51.18-1.74-14.98-15.36-2.82-20.79-8.26-2.53-2.54,1.21-5.7.22-8.31-2.63,2.11-6.16-.3-8.02.15-2.33.57-5.05,6.19-6.37,7.16-2.17,1.57-8.81,1.09-10.24,4.06l-.49,20.42c1.7,4.53-.01,8.06-.04,12.28-.02,2.4,1.35,5.91,1.06,7.4-.15.77-2.39,1.4-3.3,2.48-2.03,2.45-8.27,13.84-8.62,16.68-.24,2.02.23,1.08,1.27,1.49,4.79,1.86,12.01.64,16.4,3.8,1.57,1.13,9.84,11.95,9.56,13.48-16.99,16.86-34.27,33.41-52.82,48.42-6.67,2.8-12.66-4.4-18.33-7.42-15.87-8.45-45.36-10.86-63.18-9-11.12,1.15-23.52,7.39-33.17,12.98l-6.19-1.72c-2.27-8.51,2.35-16.5,7.3-22.76,5.1-6.46,23.79-22.61,30.82-25.79,5.27-2.37,8.04-.82,13.88-5.49,8.34-6.66,7.65-12.58,12.3-19.18,1.03-1.45,2.66-1.12,3.76-3.93,1.59-4.04,1.41-36.61.88-42.75-.82-9.46-9.8-9.1-12.87-1.91-1.98,4.63-.18,13.37-6.67,12.61-2.24-.27-5.16-4.03-7.23-4.74-1.61-.55-2.64.37-3.8.21-2.58-.36-16.71-14.92-15.09-19.86l4.51-.06c2.59-5.68-3.12-10.45-2.53-15.32.57-4.64,7.5-15.73,10.77-19.23,5.6-6.01,13.74-9.34,21.56-10.77,3.56-.66,7.43,1.34,9.93-2.01,3.39-4.55.02-23.96,1.81-31.28,1.33-5.43,9.27-13.6,13.24-17.56,1.25-1.25,4.15-1.3,2.29-3.26-9.34.99-22.69,3.63-31.89,1.86-3.13-.61-10.85-6.17-15.51-7.58-6.1-1.86-19.43-2.99-25.55-1.81-3.08.6-4.69,2.16-9.83,3.02-1.8.3-2.98,3.16-6.48.79-5.78-3.91,3.13-22.33,5.94-26.9,7.52-12.21,30.43-23.44,43.98-22.31,9.39.78,25.06,4.41,34.52,6.79,8.71,2.2,23.26,8.94,31.38,9.1,3.21.06,8.6-2.31,11.25-4.23,2.43-1.75,9.17-10.61,9.86-10.83,1.27-.39,8.45-1.17,9.84-1.02,2.7.3,3.63,2.23,5.63,2.72,5.62,1.35,12.7-2.78,16.49,5.62,4.9,10.85-4.29,16.89-5.28,25.34-1.64,13.9-.1,31.32.06,45.54.02,2.26-1.09,4.41-1.03,6.59.15,5.73,1.54,12.52,1.4,18.52,1.5,4.64,7.66,2.36,11.81,2.9,5.68.74,19.87,3.53,24.74,3.31,1.21-.05,2.58-1.57,4.55-1.58,2.49-.03,3.66,1.95,5.93,1.95-1.51-12.39-3.83-24.93-4.55-37.42-.44-7.7,2.26-14.85-1.79-21.82-3.89-1.57-11.12,1.02-14.25-1.32-1.98-1.48-7.15-12.13-6.8-14.7.56-4.23,11.54-8.67,14.92-11.11,12.22-8.83,23.51-19.49,37.59-25.4,12.44,6.95,20.91,21.96,35.6,23.7,5.93-1.28,22.09-3.53,22.22,6.1.13,9.15-15.49,16.43-20.48,22.24-8.33,9.72-4.37,27.88-4.35,40.19.08,32.12-1.33,66.06-1.46,98.65-.04,10.02-1.21,21.58-1.05,31.28.09,5.75,2.93,12,5.96,16.68l11.4-1.56c4.96,5.25,17.75,12.99,8.54,20.23-7.76,6.09-18.32,8.66-26.67,14.94-3.78,2.84-13.66,14.18-15.6,15.06C1356.32,682.66,1353.36,681.95,1352.79,682.45ZM1246.83,443.57c-2.6-.49-1.49.68-2.05,2.09-1.69,4.25-3.89,9.96-4.32,14.5-3.6,37.62,2.78,81.22.02,119.4-1.28,17.72-11.86,26.98-24.67,36.92.75,4.59,6.13-.33,9.17,1.84l.92,2.88c-.21,1.91-12.73,11-11,12.79,7.24-2.11,12.04-13.36,19.62-13.33,4.76.02,7.04,2.01,11.25-3.32L1246.83,443.57Z"/><path d="M1424.39,660.53c.9-.84,1.08-3.05,2.65-4.57,6.54-6.32,24.33-17.73,32.58-21.88,2.33-1.17,8.63-2.13,9.5-3.85.93-1.85-1.51-1.39-2.22-1.57-10.3-2.66-15.73-3.49-23.33-11.98-2.4-2.68-11.68-17.63-11.18-20.26.93-4.96,7.51-.06,9.93.06,2.36.12,4.95-2.04,7.4-2.15,3.79-.17,14.35,3.45,18.16,5.17,9.38,4.24,15.35,14.18,25.83,4.54-6.29,1.08-11.46-2.73-16.09-6.78-2.93-2.57-6.37-8.52-10.08-8.91-3.19-.34-16.96,1.94-18.78.75-4.05-2.65-3.94-8.3-.86-11.69,1.51-1.67,6.9-2.69,6.09-4.41-4.59-3.96-10.75-5.05-15.78-8.08-6.75-4.07-19.08-17.37-18.25-25.82.52-5.33.27-3.88.06-8.9-.37-9.16.36-15.61,3.83-24.06.74-1.81,5.52-10.85,6.56-11.71,2.89-2.38,6.36-1.17,9.74-1.64,4.44-1.47-1.72-16.82-1.07-20.5.34-1.95,3.23-7.28,4.04-10.43,2.52-9.88,1.86-15.18,8.5-23.3,8.03-9.85,21.53-23.49,32.34-29.89,6.21-3.67,32.85-13.16,39.66-13.66,20.72-1.54,50.2,1.08,70.58,5.93,9.48,2.26,18.63,9.15,29.31,7.31,4.84-.83,8.28-5.1,13.98-3.22,1.37.45,13.07,11.86,13.72,13.19,2.82,5.79-19.8,19.97-23.67,23.28-5.02,4.3-22.23,22.13-25.51,27.2-1.03,1.58-2.04,3.87-1.95,5.81,1.62,3.69,12.22-.12,16.08-.12,30.72.04,90.66,24.61,83.64,64.57-4.35,24.8-15.33,44.95-31.18,64.08-19.83,23.95-39.75,50.51-60.95,73.32-3.71,3.99-9.18,10.4-15.05,9.67-24.74-9.85-52.29-17.79-78.7-21.21-3.85-.49-8.45.54-11.98-.32-1.89-.45-3.2-2.57-4.89-2.65-1.28-.06-8.14,2.26-10.54,2.73-18.75,3.7-32.23,5.83-50.45,13.25-6.92,2.82-19.38,11.51-26.27,8.46C1396.57,680.44,1419.92,664.68,1424.39,660.53ZM1525.68,427.21c-3.33.15-7.37,1.33-10.7,1.64-7.02.67-16.75-.88-22.71,4.84-1.23,1.18-8.71,13.57-8.93,15.14-1.77,12.46,9.61,17.03,17.86,21.36,1.34.7,2.25,2.87,3.56,3.18,1.4.33,3.05-.95,4.47-.75,12.28,1.65,21.03,1.31,33.17,1.87,3.77.17,9.82,2.05,13.29,1.98,5.37-.12,17.97-14,18.86-19.37,1.19-7.17-18.48-22.91-24.4-25.51C1545.63,429.6,1530.6,426.98,1525.68,427.21ZM1461.78,548.01c1.02.63,20.54,5.34,23.19,5.8,14.46,2.56,30.33.09,45.19.2,8.72.07,19.5,2.28,28.37,1.07,4.24-.58,6.15-3.2,1.19-5.2-13.18-5.31-25.71-2.51-39.11-4.5-4.59-.68-8.59,1.16-12.14.89-2.19-.17-4.24-1.94-6.72-1.94-3.62,0-8.13,3.45-12.06,2.77-2.21-.38-8.59-4.11-12.01-5.22-8.47-2.74-11.38-3.87-19.57-8.06-2.49-1.28-6.86-2.2-8.79-3.59-3.3-2.36-3.99-13.3-9.05-15.95-2.09-.39-1.4.85-1.31,2.31.28,4.24,5,18.15,7.57,21.35,1.76,2.19,10.02,4.76,13.13,6.93C1460.94,545.76,1461.25,547.68,1461.78,548.01ZM1504.12,617.14c2.89-.63,4.86-1.71,7.99-1.97,15.19-1.3,44.53-1.42,59.61.04,6.63.64,33.2,9.22,36.45,8.32,8.47-7.02,41.25-41.45,42.09-50.49.38-4.04-1.69-9.87-1.48-14.13l-7.39,7.37c1.24,5.29,1.51,11.4-1.25,16.26-3.22,5.67-8.01,4.16-8.37,4.52-.2.21,0,4.22-.42,5.88-1.84,7.51-15.39,21.56-22.32,15.04-5.55-5.22,1.77-10.64-.47-16.99-1.22-3.45-10.31-9.39-13.64-10.27-5.77-1.52-46.55-1.46-53.51-.51-6.09.84-12.48,14.43-16.95,18.51-2.9,2.65-8.3,5.12-11.85,8.22C1511.46,607.95,1503.07,616.1,1504.12,617.14Z"/><path d="M294.18,395.42c1.6.89,10.57-.11,13.59.2,4.41.44,21.82,8.3,26.36,10.76,19.07,10.31,37.46,30.04,47.89,48.16,5.58,9.71,11.67,21.3,11.52,32.4l1.24.78c1.11.15,2.45-.65,3.46-.3,3,1.05,11.47,10.57,16.59,12.19,2.03.64,3.99-.52,6.19-.18,10.52,1.61,28.09,6,29.32-9.13.48-5.95-1.27-14.17-1.16-20.23.06-3.34,2.31-6.75.61-10.1-.76-1.19-6.14-2.65-7.9-3.13-13.62-3.72-15.93-2.61-28.91-1.66-11.99.88-11.93-7.43-20.43-12.48-.57-.71-.64-1.51-.55-2.36.62-5.54,25.8-19.29,30.62-24.14,2.63-2.65,3.86-6.41,7.21-9.55,4.99-4.69,17.53-13.58,24.6-11.55,5.54,1.59,13.92,7.66,21.13,9.9,7.07,2.19,15.58,3.98,23.01,2.88,8.26-1.23,27.93-13.92,29.4,1.67.69,7.24-2.66,6.1-4.61,9.17-.67,1.06.37,2.49-.64,4.09-6.56,10.42-17.97,21.63-29.52,27.09-2.86,1.35-7.27,1.55-9.74,3.33-5.96,4.31-2.56,10.43-2.47,15.84,1.09,66.91-1.76,134.1-1.14,200.87.05,4.77,3.57,15.16-1.01,18.16-6.24,4.1-10.43-1.26-16.06-3.04-9.25-2.93-17-1.25-23.74-10.35-1.31-1.77-2.92-6.8-3.26-7.02-.73-.49-3.43-.32-5.29-1.26-8.88-4.5-13.01-18.1-17.47-25.85-7.15-12.41-15.85-24.85-21.77-37.15-4.3-8.95-9.84-17.34-20.59-20.05-14.83-3.74-30.08-6.51-45.51-5.21-26.44,2.22-17.04,17.93-17.4,36.51,2.26,3.52,20.08,3.26,25.11,4.25,8.75,1.73,19.19,8.57,26.22,9.92,4.46.86,10.27-.74,14.34.86,3.62,1.42,5.06,11.63,11.51,11.4-1.91,4.85-3.81,9.27-7.2,13.4-6.64,8.08-14.42,15.36-21.98,22.57-2.82,2.69-8.64,11-12.27,11.57-4.41.69-19.84-8.25-25.73-10.36-23.48-8.4-51.93-7.09-75.67.45-8.27,2.62-12.91,8.26-22.4,5.31-3.45-1.06-7.72-4.31-7.03-7.91,2.51-13.2,20.13-30.97,31.36-38.82,4.74-3.31,31.77-17.41,32.36-20.37l.24-43.6h-3.06c.32,20.4-25.98,5.23-32.69-3.36-2.88-3.68-8.84-15.97-3.29-17.92l.26-2.23c-3.78-1.78-5.1-3.65-5.24-7.71-.39-11.51,14.25-21.03,23.92-25.63,6.37-3.04,18.09-4.26,18.77-11.97.72-8.14-2.16-16.81-2.74-24.86-.3-4.09.92-25-1.13-26.32-11.24,1.39-26.9,7.67-27.67,19.91-12.19,4.83-23.38-5.19-23.3-16.64.02-2.59,1.65-5.45,1.76-7.89.01-.39-.2-4.02-.24-5.13-.09-2.58-1.69-4.94-1.35-7.85,2.24-19.18,48.58-41.76,67.01-43.76C294.35,391.26,292.49,394.47,294.18,395.42ZM299.1,531.07c12.05,2.29,2.33,17.3,7.67,24,2.78,3.49,9.85.32,14.3.04,5.6-.35,12.97-.94,18.33-1.01,6.26-.09,15.48,1.59,20.51,1.05,1.52-.16,2.63-.12,3.54-1.52-5.78-11.09-12.51-21.65-18.24-32.77-4.12-7.99-8.11-20.75-12.56-27.59-3.04-4.68-13.23-12.89-17.74-17.9-2.64-2.92-4.94-6.12-7.08-9.37l-3.64.72c.73,1.4,1.04,2.67,1.09,4.26.39,13.6,1.9,39.47-.13,51.87-.26,1.57-1.48,4.08-2.51,5.33C301.34,529.75,299.32,529.54,299.1,531.07ZM444.9,525.54c-2.49-.03-6.26,1.68-9.42,1.76-2.93.07-10.94-2.39-11.69.49-.38,1.44,8.42,19.45,9.98,22.19,4.61,8.09,10.75,15.61,16.01,23.35,5.66-5.64,1.17-7.81.48-12.93-1.19-8.95.43-20.37-.16-29.6C449.4,528.86,447.21,525.57,444.9,525.54Z"/><path d="M1068.4,683.89c-.64,1.11.35,3.5-.27,4.57-8.09,3.65-5.98-2.2-8.21-6.22-1.31-2.36-6.26-5.58-7.98-8.17-2.8,2.31-.92,5.83-.47,8.7-3.5.23-8.26-.13-11.15-2.44-2.05-1.63-2.41-4.64-3.04-5.09-1.7-1.23-4.62-.72-7.74-4.07-21.33-22.92-23.72-44.97-36.33-71.82-2.81-5.99-7.69-8.44-14.12-8.67-14.94-.55-31.37-2.24-46.47-1.04-2.39.19-4.91,1.95-6.54,1.88-2.26-.1-4.46-3.82-6.51-3.81-1.64,0-9.78,6.01-13.32,5.03l-9.11,19.22c1.58,1.36,11.38,9.29,12.16,9.38,1.19.12,3.05-1.65,5.4-1.42,3.88.37,11.21,5.68,15.13,5.68,2.74,0,5.53-2.62,8.5-2.92,5.23-.54,8.24,3.57,12.17,6.57,1.38,1.06,3.77,1.42,4.71,2.37,5.41,5.5-1.62,7.64-4.4,10.91s-4.97,8.72-7.45,11.65c-3.84,4.54-13.71,11.82-18.67,16.46s-12.77,15.48-18.61,16.6c-8.5,1.64-20.69-7.97-28.29-11.42-5.06-2.3-29.61-6.39-34.44-5.43-6.79,1.37-7.52,2.03-15.13,2.62-9.2.7-16.85,10.07-21.51,10.75-13.55,1.97-3.73-25.08-.2-31.35,12.54-22.3,31.94-21.27,50.49-31.85,6.66-3.8,14.32-25.03,17.82-32.87,5.59-12.54,10.78-25.45,16.46-38.17,5.36-12.01,11.65-23.61,17.19-35.54,1.37-6.8-13.04-10.19-17.79-9.76-10.52.96-15.97,18.41-25.05,13.51-8.41-4.55-9.97-27.24-5.99-35.09,7.15-14.1,28.98-28.48,44.21-29.66,3.39-.26,14.29.37,17.37,1.04,2.69.57,7.34,5.55,11.87,3.68,2.28-2.26-8.79-12.74-11.44-13.79-7.21-2.86-17.86,3.96-24.58,4.08-2.17.04-3.33-2.01-4.4-1.83-.73.12-2.27,2.31-3.67,3.01-3.63,1.82-14.48,6.01-18.12,6.39-3.43.36-9.12-2.23-7.19-6.54s10.12-11.42,11.38-16.29c1.14-4.39-1.57-7.42.34-11.26,1.21-2.44,12.31-11.64,15.04-13.48,4.83-3.27,23.63-14.13,28.41-15.06,12.58-2.44,39.88-.55,51.78,4.84,15.58,7.07,17.29,24.97,23.29,38.82,20.2,46.61,37.8,94.13,57.38,141.1,4.45,10.68,11.77,30.74,18.33,39.13,8.28,10.59,8.26,4.91,17.72,5.76,3,.27,5.88,2.91,8.41,2.86,3.43-.08,6.4-4.8,10.24-4.81,3.55,0,8.34,3.81,6.53,7.8-.84,1.86-7.67,9.44-9.62,12.33-8.98,13.27-18.14,29.83-29.98,40.59C1071.57,682.59,1068.53,683.66,1068.4,683.89ZM948.49,493.6l-19.02,40.28c.18,2.51,11.26,2.96,13.57,3.01,3,.07,19.6-.22,21.14-.75,4.38-1.49-2.96-12.57-4.22-15.69-2.85-7.07-5.72-18.66-8.96-24.63C950.47,494.84,949.89,493.27,948.49,493.6Z"/></svg>
-    <span>Florianópolis, Santa Catarina, Brasil</span>
-    <span>© 2026 NOAHS</span>
+    <div class="foot-grid">
+      <div class="foot-contact">
+        <p>Shows, imprensa, etc - envie um e-mail <span class="en">/ email us:</span></p>
+        <a href="mailto:noahstheband@gmail.com?subject=Contato%20pelo%20site%20NOAHS">noahstheband@gmail.com</a>
+        <a href="https://wa.me/5548996036777?text=Ol%C3%A1%2C%20vim%20pelo%20site%20da%20NOAHS!" target="_blank" rel="noopener">+5548996036777</a>
+      </div>
+      <ul class="foot-links">
+        <li><a href="https://open.spotify.com/intl-pt/artist/5uyTOzG8fzS316eTcOvfgp" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg>SPOTIFY</a></li>
+        <li><a href="https://www.instagram.com/noahstheband/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7.0301.084c-1.2768.0602-2.1487.264-2.911.5634-.7888.3075-1.4575.72-2.1228 1.3877-.6652.6677-1.075 1.3368-1.3802 2.127-.2954.7638-.4956 1.6365-.552 2.914-.0564 1.2775-.0689 1.6882-.0626 4.947.0062 3.2586.0206 3.6671.0825 4.9473.061 1.2765.264 2.1482.5635 2.9107.308.7889.72 1.4573 1.388 2.1228.6679.6655 1.3365 1.0743 2.1285 1.38.7632.295 1.6361.4961 2.9134.552 1.2773.056 1.6884.069 4.9462.0627 3.2578-.0062 3.668-.0207 4.9478-.0814 1.28-.0607 2.147-.2652 2.9098-.5633.7889-.3086 1.4578-.72 2.1228-1.3881.665-.6682 1.0745-1.3378 1.3795-2.1284.2957-.7632.4966-1.636.552-2.9124.056-1.2809.0692-1.6898.063-4.948-.0063-3.2583-.021-3.6668-.0817-4.9465-.0607-1.2797-.264-2.1487-.5633-2.9117-.3084-.7889-.72-1.4568-1.3876-2.1228C21.2982 1.33 20.628.9208 19.8378.6165 19.074.321 18.2017.1197 16.9244.0645 15.6471.0093 15.236-.005 11.977.0014 8.718.0076 8.31.0215 7.0301.0839m.1402 21.6932c-1.17-.0509-1.8053-.2453-2.2287-.408-.5606-.216-.96-.4771-1.3819-.895-.422-.4178-.6811-.8186-.9-1.378-.1644-.4234-.3624-1.058-.4171-2.228-.0595-1.2645-.072-1.6442-.079-4.848-.007-3.2037.0053-3.583.0607-4.848.05-1.169.2456-1.805.408-2.2282.216-.5613.4762-.96.895-1.3816.4188-.4217.8184-.6814 1.3783-.9003.423-.1651 1.0575-.3614 2.227-.4171 1.2655-.06 1.6447-.072 4.848-.079 3.2033-.007 3.5835.005 4.8495.0608 1.169.0508 1.8053.2445 2.228.408.5608.216.96.4754 1.3816.895.4217.4194.6816.8176.9005 1.3787.1653.4217.3617 1.056.4169 2.2263.0602 1.2655.0739 1.645.0796 4.848.0058 3.203-.0055 3.5834-.061 4.848-.051 1.17-.245 1.8055-.408 2.2294-.216.5604-.4763.96-.8954 1.3814-.419.4215-.8181.6811-1.3783.9-.4224.1649-1.0577.3617-2.2262.4174-1.2656.0595-1.6448.072-4.8493.079-3.2045.007-3.5825-.006-4.848-.0608M16.953 5.5864A1.44 1.44 0 1 0 18.39 4.144a1.44 1.44 0 0 0-1.437 1.4424M5.8385 12.012c.0067 3.4032 2.7706 6.1557 6.173 6.1493 3.4026-.0065 6.157-2.7701 6.1506-6.1733-.0065-3.4032-2.771-6.1565-6.174-6.1498-3.403.0067-6.156 2.771-6.1496 6.1738M8 12.0077a4 4 0 1 1 4.008 3.9921A3.9996 3.9996 0 0 1 8 12.0077"/></svg>INSTAGRAM</a></li>
+        <li><a href="https://music.apple.com/br/artist/noahs/1168741801" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M23.994 6.124a9.23 9.23 0 00-.24-2.19c-.317-1.31-1.062-2.31-2.18-3.043a5.022 5.022 0 00-1.877-.726 10.496 10.496 0 00-1.564-.15c-.04-.003-.083-.01-.124-.013H5.986c-.152.01-.303.017-.455.026-.747.043-1.49.123-2.193.4-1.336.53-2.3 1.452-2.865 2.78-.192.448-.292.925-.363 1.408-.056.392-.088.785-.1 1.18 0 .032-.007.062-.01.093v12.223c.01.14.017.283.027.424.05.815.154 1.624.497 2.373.65 1.42 1.738 2.353 3.234 2.801.42.127.856.187 1.293.228.555.053 1.11.06 1.667.06h11.03a12.5 12.5 0 001.57-.1c.822-.106 1.596-.35 2.295-.81a5.046 5.046 0 001.88-2.207c.186-.42.293-.87.37-1.324.113-.675.138-1.358.137-2.04-.002-3.8 0-7.595-.003-11.393zm-6.423 3.99v5.712c0 .417-.058.827-.244 1.206-.29.59-.76.962-1.388 1.14-.35.1-.706.157-1.07.173-.95.045-1.773-.6-1.943-1.536a1.88 1.88 0 011.038-2.022c.323-.16.67-.25 1.018-.324.378-.082.758-.153 1.134-.24.274-.063.457-.23.51-.516a.904.904 0 00.02-.193c0-1.815 0-3.63-.002-5.443a.725.725 0 00-.026-.185c-.04-.15-.15-.243-.304-.234-.16.01-.318.035-.475.066-.76.15-1.52.303-2.28.456l-2.325.47-1.374.278c-.016.003-.032.01-.048.013-.277.077-.377.203-.39.49-.002.042 0 .086 0 .13-.002 2.602 0 5.204-.003 7.805 0 .42-.047.836-.215 1.227-.278.64-.77 1.04-1.434 1.233-.35.1-.71.16-1.075.172-.96.036-1.755-.6-1.92-1.544-.14-.812.23-1.685 1.154-2.075.357-.15.73-.232 1.108-.31.287-.06.575-.116.86-.177.383-.083.583-.323.6-.714v-.15c0-2.96 0-5.922.002-8.882 0-.123.013-.25.042-.37.07-.285.273-.448.546-.518.255-.066.515-.112.774-.165.733-.15 1.466-.296 2.2-.444l2.27-.46c.67-.134 1.34-.27 2.01-.403.22-.043.442-.088.663-.106.31-.025.523.17.554.482.008.073.012.148.012.223.002 1.91.002 3.822 0 5.732z"/></svg>APPLE MUSIC</a></li>
+        <li><a href="https://www.youtube.com/noahstheband" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>YOUTUBE</a></li>
+        <li><a href="https://x.com/noahstheband" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14.234 10.162 22.977 0h-2.072l-7.591 8.824L7.251 0H.258l9.168 13.343L.258 24H2.33l8.016-9.318L16.749 24h6.993zm-2.837 3.299-.929-1.329L3.076 1.56h3.182l5.965 8.532.929 1.329 7.754 11.09h-3.182z"/></svg>X</a></li>
+        <li><a href="https://www.facebook.com/noahstheband" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9.101 23.691v-7.98H6.627v-3.667h2.474v-1.58c0-4.085 1.848-5.978 5.858-5.978.401 0 .955.042 1.468.103a8.68 8.68 0 0 1 1.141.195v3.325a8.623 8.623 0 0 0-.653-.036 26.805 26.805 0 0 0-.733-.009c-.707 0-1.259.096-1.675.309a1.686 1.686 0 0 0-.679.622c-.258.42-.374.995-.374 1.752v1.297h3.919l-.386 2.103-.287 1.564h-3.246v8.245C19.396 23.238 24 18.179 24 12.044c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.628 3.874 10.35 9.101 11.647Z"/></svg>FACEBOOK</a></li>
+      </ul>
+      <div class="flogo-wrap"><div class="flogo-spin"><svg class="flogo" viewBox="206 386 1500 310" role="img" aria-label="NOAHS®"><path d="M777.74,414.05c6.54,4.32,8.67,2.77,15.1,11.07,6.59,8.51,23.73,43.83,24.78,54.13.45,4.42-.44,8.5-.2,12.81l.46,1.1c.9.57,2.69-.54,3.69.72.6.76,5.2,14.43,5.32,15.73.3,3.26-2.76,10.2-2.69,15.38.07,5.78,2.97,12.19,2.95,17.54-.03,6.47-6.07,13.96-3.95,21.79l-6.46,2.73c.3,11.1-2.54,21.79-6.64,31.88-10.92,26.86-49.51,67.22-75.93,77.86-5.04,2.03-12.3,2.19-17.91,3.76-7.4,2.08-20.75,8.09-27.2,8.71-8.35.81-37.4.11-45.88-.95-5.29-.66-18.04-4.03-23.69-5.54-47.67-12.7-76.96-41.58-91.55-89.86-1.22-4.03-6.25-13.77-5.93-17.21.34-3.54,9.68-8.15,12.16-10.75-4.8-3.02-7.61-7.79-11.26-11.64-2.51-2.64-4.55-.53-5.48-6.98-3.8-26.6,8.68-65.59,23.47-87.49,13.44-19.88,49.2-59.87,72.58-63.79,7.4-1.24,10.12,2.58,12.71,2.45,6.96-.33,9.55-9.31,19.68-1.56,12.82,9.8-16.37,19.33-21.56,24.52-15.64,15.65-26.34,30.81-29.96,54.1-1.63,10.54-1.1,20.31-2.93,31.07-1.03,6.11-1.08,11.42-2.3,17.1-1.14,5.33-8.01,16.98-7.87,19.64.18,3.54,4.45,10.96,5.1,16.01.61,4.74-.12,9.51.36,14.25,1.04,10.39,13.95,50.31,19.52,58.63,3.91,5.82,22.99,24.22,29.06,26.32,1.64.56,3.19-.71,4.86-.33,8.76,2.02,15.96,5.01,25.52,5.67,6.08.42,21.99,2.3,22.96-5.3,1.57-12.21-.26-30.85-.08-43.96.23-16.72,1.82-34.18,1.71-50.66-.01-2.87-1.22-6.71-1.55-9.68l6.42-3.98-4.49-3.1c-.04-4.45-1.96-10.21-1.86-14.44.45-19.83-.21-39.47-.23-59.52,0-6.64,1.87-15.71,1.91-22.38.02-3.74-.79-6.44-4.68-5.37.44,2.21-.57,4.55-.58,6.52-.17,28.12,1.54,56.04,1.48,83.71-.02,6.86,3.64,10.04-5.59,13.62.01,1.62,3.11,3.2,4.37,5.2,4.15,6.62.49,20.78.28,28.87-.16,6.04.29,12.28.37,17.58.03,1.45,1.75,2.49,1.38,5.6-.71,6.01-8.62,14.81-12.93,18.8-3.03,2.81-14.8,12.08-18.05,13.37-6.5,2.58-11.92.89-11.91-7.04-3.13,1.01-4.45,3.35-8.22,3.69-5.16.47-9.26-3.2-10.27-8.31.63-37.9,1.03-75.92.76-113.89-.05-7.14,0-14.28,0-21.36,0-8.37.04-16.61-.97-24.91-5.04.4-9.36.25-13.12-3.6-1.58-6.55,3.33-8.71,3.66-10.67.39-2.29-5.37-3.84-.37-9.12,5.69-6.02,29.73-12.18,38.8-16.12,7.6-3.3,15.6-8.57,23.43-11.67,2.98-1.18,7.25-1.12,10.3-2.91,3.33-6.57-3.93-12.53,3.78-17.51,6.95-4.5,9.97,1.65,14.57,2.12,1.76.17,3.7-1.26,5.51-1.23,2.36.04,5.12,2.34,7.47,2.34,4.45,0,14.66-5.35,21.55-5.71,10.91-.57,25.49,11.35,33.72,18.46C776.41,411.41,777.16,413.67,777.74,414.05ZM715.73,434.79l.51,49.66c5.45,5.29,14.22,6.52,21.38,5.81,2.27-.23,4.62-1.65,6.77-1.8s3.98,1.36,5.98.48c2.01-1.42-.16-5.27-.8-7.03-4.69-12.87-15.42-28.82-24.46-38.86C724.08,441.92,716.69,433.65,715.73,434.79ZM713.92,551.89c1.16,3.11,2.6,8.02,2.67,11.26.06,2.82-2.6,9.79.67,10.94,4.69,1.64,10.22-4.21,16.29-2.37,1.17.35,2.26,2.02,3.23,2.11,1.77.18,8.44-2.64,12.16-2.63,4.15.01,10.08,3.99,12.24,2.13,3.89-3.33,4.48-17.09,4.17-22.07-.4-6.65-3.33-13.43-3.77-19.47-.5-7.02,2.61-11.59-1.87-18.52-4.56-7.07-14.45,1.07-21.96,1.5-7.66.45-14.41-3.14-21.94-2.86-1.78,1.64.96,17.45.89,20.81-.05,2.34-1.53,4.8-1.48,6.89C715.3,543.13,719.78,550.48,713.92,551.89ZM753.02,600.68c-2.78-1.79-5.71-.13-8.71-.09-9.7.13-19-1.93-28.17,2.83-1.56,2.42.86,5.48.6,7.21-.15.94-2,.9-2.45,1.58-1.28,1.95,2.21,8.27,2.29,11.33.17,6.43-1.97,16.01-1.88,22.35.13,9.58,7.58,2.51,11.33-.98,5.68-5.29,25.93-32.32,27.06-39.08C753.28,604.67,753.49,601.46,753.02,600.68Z"/><path d="M1352.79,682.45c-.5.45-.11,4.54-3.29,4.58-4.5.06-26.37-16.09-31.02-19.9-4.63-3.8-18.21-14.93-18.58-20.59-.39-5.96,14.37-14.24,15.32-20.66.55-3.69-1-6.33-.94-9.41.3-15.17,2.69-36.63,1.01-51.18-1.74-14.98-15.36-2.82-20.79-8.26-2.53-2.54,1.21-5.7.22-8.31-2.63,2.11-6.16-.3-8.02.15-2.33.57-5.05,6.19-6.37,7.16-2.17,1.57-8.81,1.09-10.24,4.06l-.49,20.42c1.7,4.53-.01,8.06-.04,12.28-.02,2.4,1.35,5.91,1.06,7.4-.15.77-2.39,1.4-3.3,2.48-2.03,2.45-8.27,13.84-8.62,16.68-.24,2.02.23,1.08,1.27,1.49,4.79,1.86,12.01.64,16.4,3.8,1.57,1.13,9.84,11.95,9.56,13.48-16.99,16.86-34.27,33.41-52.82,48.42-6.67,2.8-12.66-4.4-18.33-7.42-15.87-8.45-45.36-10.86-63.18-9-11.12,1.15-23.52,7.39-33.17,12.98l-6.19-1.72c-2.27-8.51,2.35-16.5,7.3-22.76,5.1-6.46,23.79-22.61,30.82-25.79,5.27-2.37,8.04-.82,13.88-5.49,8.34-6.66,7.65-12.58,12.3-19.18,1.03-1.45,2.66-1.12,3.76-3.93,1.59-4.04,1.41-36.61.88-42.75-.82-9.46-9.8-9.1-12.87-1.91-1.98,4.63-.18,13.37-6.67,12.61-2.24-.27-5.16-4.03-7.23-4.74-1.61-.55-2.64.37-3.8.21-2.58-.36-16.71-14.92-15.09-19.86l4.51-.06c2.59-5.68-3.12-10.45-2.53-15.32.57-4.64,7.5-15.73,10.77-19.23,5.6-6.01,13.74-9.34,21.56-10.77,3.56-.66,7.43,1.34,9.93-2.01,3.39-4.55.02-23.96,1.81-31.28,1.33-5.43,9.27-13.6,13.24-17.56,1.25-1.25,4.15-1.3,2.29-3.26-9.34.99-22.69,3.63-31.89,1.86-3.13-.61-10.85-6.17-15.51-7.58-6.1-1.86-19.43-2.99-25.55-1.81-3.08.6-4.69,2.16-9.83,3.02-1.8.3-2.98,3.16-6.48.79-5.78-3.91,3.13-22.33,5.94-26.9,7.52-12.21,30.43-23.44,43.98-22.31,9.39.78,25.06,4.41,34.52,6.79,8.71,2.2,23.26,8.94,31.38,9.1,3.21.06,8.6-2.31,11.25-4.23,2.43-1.75,9.17-10.61,9.86-10.83,1.27-.39,8.45-1.17,9.84-1.02,2.7.3,3.63,2.23,5.63,2.72,5.62,1.35,12.7-2.78,16.49,5.62,4.9,10.85-4.29,16.89-5.28,25.34-1.64,13.9-.1,31.32.06,45.54.02,2.26-1.09,4.41-1.03,6.59.15,5.73,1.54,12.52,1.4,18.52,1.5,4.64,7.66,2.36,11.81,2.9,5.68.74,19.87,3.53,24.74,3.31,1.21-.05,2.58-1.57,4.55-1.58,2.49-.03,3.66,1.95,5.93,1.95-1.51-12.39-3.83-24.93-4.55-37.42-.44-7.7,2.26-14.85-1.79-21.82-3.89-1.57-11.12,1.02-14.25-1.32-1.98-1.48-7.15-12.13-6.8-14.7.56-4.23,11.54-8.67,14.92-11.11,12.22-8.83,23.51-19.49,37.59-25.4,12.44,6.95,20.91,21.96,35.6,23.7,5.93-1.28,22.09-3.53,22.22,6.1.13,9.15-15.49,16.43-20.48,22.24-8.33,9.72-4.37,27.88-4.35,40.19.08,32.12-1.33,66.06-1.46,98.65-.04,10.02-1.21,21.58-1.05,31.28.09,5.75,2.93,12,5.96,16.68l11.4-1.56c4.96,5.25,17.75,12.99,8.54,20.23-7.76,6.09-18.32,8.66-26.67,14.94-3.78,2.84-13.66,14.18-15.6,15.06C1356.32,682.66,1353.36,681.95,1352.79,682.45ZM1246.83,443.57c-2.6-.49-1.49.68-2.05,2.09-1.69,4.25-3.89,9.96-4.32,14.5-3.6,37.62,2.78,81.22.02,119.4-1.28,17.72-11.86,26.98-24.67,36.92.75,4.59,6.13-.33,9.17,1.84l.92,2.88c-.21,1.91-12.73,11-11,12.79,7.24-2.11,12.04-13.36,19.62-13.33,4.76.02,7.04,2.01,11.25-3.32L1246.83,443.57Z"/><path d="M1424.39,660.53c.9-.84,1.08-3.05,2.65-4.57,6.54-6.32,24.33-17.73,32.58-21.88,2.33-1.17,8.63-2.13,9.5-3.85.93-1.85-1.51-1.39-2.22-1.57-10.3-2.66-15.73-3.49-23.33-11.98-2.4-2.68-11.68-17.63-11.18-20.26.93-4.96,7.51-.06,9.93.06,2.36.12,4.95-2.04,7.4-2.15,3.79-.17,14.35,3.45,18.16,5.17,9.38,4.24,15.35,14.18,25.83,4.54-6.29,1.08-11.46-2.73-16.09-6.78-2.93-2.57-6.37-8.52-10.08-8.91-3.19-.34-16.96,1.94-18.78.75-4.05-2.65-3.94-8.3-.86-11.69,1.51-1.67,6.9-2.69,6.09-4.41-4.59-3.96-10.75-5.05-15.78-8.08-6.75-4.07-19.08-17.37-18.25-25.82.52-5.33.27-3.88.06-8.9-.37-9.16.36-15.61,3.83-24.06.74-1.81,5.52-10.85,6.56-11.71,2.89-2.38,6.36-1.17,9.74-1.64,4.44-1.47-1.72-16.82-1.07-20.5.34-1.95,3.23-7.28,4.04-10.43,2.52-9.88,1.86-15.18,8.5-23.3,8.03-9.85,21.53-23.49,32.34-29.89,6.21-3.67,32.85-13.16,39.66-13.66,20.72-1.54,50.2,1.08,70.58,5.93,9.48,2.26,18.63,9.15,29.31,7.31,4.84-.83,8.28-5.1,13.98-3.22,1.37.45,13.07,11.86,13.72,13.19,2.82,5.79-19.8,19.97-23.67,23.28-5.02,4.3-22.23,22.13-25.51,27.2-1.03,1.58-2.04,3.87-1.95,5.81,1.62,3.69,12.22-.12,16.08-.12,30.72.04,90.66,24.61,83.64,64.57-4.35,24.8-15.33,44.95-31.18,64.08-19.83,23.95-39.75,50.51-60.95,73.32-3.71,3.99-9.18,10.4-15.05,9.67-24.74-9.85-52.29-17.79-78.7-21.21-3.85-.49-8.45.54-11.98-.32-1.89-.45-3.2-2.57-4.89-2.65-1.28-.06-8.14,2.26-10.54,2.73-18.75,3.7-32.23,5.83-50.45,13.25-6.92,2.82-19.38,11.51-26.27,8.46C1396.57,680.44,1419.92,664.68,1424.39,660.53ZM1525.68,427.21c-3.33.15-7.37,1.33-10.7,1.64-7.02.67-16.75-.88-22.71,4.84-1.23,1.18-8.71,13.57-8.93,15.14-1.77,12.46,9.61,17.03,17.86,21.36,1.34.7,2.25,2.87,3.56,3.18,1.4.33,3.05-.95,4.47-.75,12.28,1.65,21.03,1.31,33.17,1.87,3.77.17,9.82,2.05,13.29,1.98,5.37-.12,17.97-14,18.86-19.37,1.19-7.17-18.48-22.91-24.4-25.51C1545.63,429.6,1530.6,426.98,1525.68,427.21ZM1461.78,548.01c1.02.63,20.54,5.34,23.19,5.8,14.46,2.56,30.33.09,45.19.2,8.72.07,19.5,2.28,28.37,1.07,4.24-.58,6.15-3.2,1.19-5.2-13.18-5.31-25.71-2.51-39.11-4.5-4.59-.68-8.59,1.16-12.14.89-2.19-.17-4.24-1.94-6.72-1.94-3.62,0-8.13,3.45-12.06,2.77-2.21-.38-8.59-4.11-12.01-5.22-8.47-2.74-11.38-3.87-19.57-8.06-2.49-1.28-6.86-2.2-8.79-3.59-3.3-2.36-3.99-13.3-9.05-15.95-2.09-.39-1.4.85-1.31,2.31.28,4.24,5,18.15,7.57,21.35,1.76,2.19,10.02,4.76,13.13,6.93C1460.94,545.76,1461.25,547.68,1461.78,548.01ZM1504.12,617.14c2.89-.63,4.86-1.71,7.99-1.97,15.19-1.3,44.53-1.42,59.61.04,6.63.64,33.2,9.22,36.45,8.32,8.47-7.02,41.25-41.45,42.09-50.49.38-4.04-1.69-9.87-1.48-14.13l-7.39,7.37c1.24,5.29,1.51,11.4-1.25,16.26-3.22,5.67-8.01,4.16-8.37,4.52-.2.21,0,4.22-.42,5.88-1.84,7.51-15.39,21.56-22.32,15.04-5.55-5.22,1.77-10.64-.47-16.99-1.22-3.45-10.31-9.39-13.64-10.27-5.77-1.52-46.55-1.46-53.51-.51-6.09.84-12.48,14.43-16.95,18.51-2.9,2.65-8.3,5.12-11.85,8.22C1511.46,607.95,1503.07,616.1,1504.12,617.14Z"/><path d="M294.18,395.42c1.6.89,10.57-.11,13.59.2,4.41.44,21.82,8.3,26.36,10.76,19.07,10.31,37.46,30.04,47.89,48.16,5.58,9.71,11.67,21.3,11.52,32.4l1.24.78c1.11.15,2.45-.65,3.46-.3,3,1.05,11.47,10.57,16.59,12.19,2.03.64,3.99-.52,6.19-.18,10.52,1.61,28.09,6,29.32-9.13.48-5.95-1.27-14.17-1.16-20.23.06-3.34,2.31-6.75.61-10.1-.76-1.19-6.14-2.65-7.9-3.13-13.62-3.72-15.93-2.61-28.91-1.66-11.99.88-11.93-7.43-20.43-12.48-.57-.71-.64-1.51-.55-2.36.62-5.54,25.8-19.29,30.62-24.14,2.63-2.65,3.86-6.41,7.21-9.55,4.99-4.69,17.53-13.58,24.6-11.55,5.54,1.59,13.92,7.66,21.13,9.9,7.07,2.19,15.58,3.98,23.01,2.88,8.26-1.23,27.93-13.92,29.4,1.67.69,7.24-2.66,6.1-4.61,9.17-.67,1.06.37,2.49-.64,4.09-6.56,10.42-17.97,21.63-29.52,27.09-2.86,1.35-7.27,1.55-9.74,3.33-5.96,4.31-2.56,10.43-2.47,15.84,1.09,66.91-1.76,134.1-1.14,200.87.05,4.77,3.57,15.16-1.01,18.16-6.24,4.1-10.43-1.26-16.06-3.04-9.25-2.93-17-1.25-23.74-10.35-1.31-1.77-2.92-6.8-3.26-7.02-.73-.49-3.43-.32-5.29-1.26-8.88-4.5-13.01-18.1-17.47-25.85-7.15-12.41-15.85-24.85-21.77-37.15-4.3-8.95-9.84-17.34-20.59-20.05-14.83-3.74-30.08-6.51-45.51-5.21-26.44,2.22-17.04,17.93-17.4,36.51,2.26,3.52,20.08,3.26,25.11,4.25,8.75,1.73,19.19,8.57,26.22,9.92,4.46.86,10.27-.74,14.34.86,3.62,1.42,5.06,11.63,11.51,11.4-1.91,4.85-3.81,9.27-7.2,13.4-6.64,8.08-14.42,15.36-21.98,22.57-2.82,2.69-8.64,11-12.27,11.57-4.41.69-19.84-8.25-25.73-10.36-23.48-8.4-51.93-7.09-75.67.45-8.27,2.62-12.91,8.26-22.4,5.31-3.45-1.06-7.72-4.31-7.03-7.91,2.51-13.2,20.13-30.97,31.36-38.82,4.74-3.31,31.77-17.41,32.36-20.37l.24-43.6h-3.06c.32,20.4-25.98,5.23-32.69-3.36-2.88-3.68-8.84-15.97-3.29-17.92l.26-2.23c-3.78-1.78-5.1-3.65-5.24-7.71-.39-11.51,14.25-21.03,23.92-25.63,6.37-3.04,18.09-4.26,18.77-11.97.72-8.14-2.16-16.81-2.74-24.86-.3-4.09.92-25-1.13-26.32-11.24,1.39-26.9,7.67-27.67,19.91-12.19,4.83-23.38-5.19-23.3-16.64.02-2.59,1.65-5.45,1.76-7.89.01-.39-.2-4.02-.24-5.13-.09-2.58-1.69-4.94-1.35-7.85,2.24-19.18,48.58-41.76,67.01-43.76C294.35,391.26,292.49,394.47,294.18,395.42ZM299.1,531.07c12.05,2.29,2.33,17.3,7.67,24,2.78,3.49,9.85.32,14.3.04,5.6-.35,12.97-.94,18.33-1.01,6.26-.09,15.48,1.59,20.51,1.05,1.52-.16,2.63-.12,3.54-1.52-5.78-11.09-12.51-21.65-18.24-32.77-4.12-7.99-8.11-20.75-12.56-27.59-3.04-4.68-13.23-12.89-17.74-17.9-2.64-2.92-4.94-6.12-7.08-9.37l-3.64.72c.73,1.4,1.04,2.67,1.09,4.26.39,13.6,1.9,39.47-.13,51.87-.26,1.57-1.48,4.08-2.51,5.33C301.34,529.75,299.32,529.54,299.1,531.07ZM444.9,525.54c-2.49-.03-6.26,1.68-9.42,1.76-2.93.07-10.94-2.39-11.69.49-.38,1.44,8.42,19.45,9.98,22.19,4.61,8.09,10.75,15.61,16.01,23.35,5.66-5.64,1.17-7.81.48-12.93-1.19-8.95.43-20.37-.16-29.6C449.4,528.86,447.21,525.57,444.9,525.54Z"/><path d="M1068.4,683.89c-.64,1.11.35,3.5-.27,4.57-8.09,3.65-5.98-2.2-8.21-6.22-1.31-2.36-6.26-5.58-7.98-8.17-2.8,2.31-.92,5.83-.47,8.7-3.5.23-8.26-.13-11.15-2.44-2.05-1.63-2.41-4.64-3.04-5.09-1.7-1.23-4.62-.72-7.74-4.07-21.33-22.92-23.72-44.97-36.33-71.82-2.81-5.99-7.69-8.44-14.12-8.67-14.94-.55-31.37-2.24-46.47-1.04-2.39.19-4.91,1.95-6.54,1.88-2.26-.1-4.46-3.82-6.51-3.81-1.64,0-9.78,6.01-13.32,5.03l-9.11,19.22c1.58,1.36,11.38,9.29,12.16,9.38,1.19.12,3.05-1.65,5.4-1.42,3.88.37,11.21,5.68,15.13,5.68,2.74,0,5.53-2.62,8.5-2.92,5.23-.54,8.24,3.57,12.17,6.57,1.38,1.06,3.77,1.42,4.71,2.37,5.41,5.5-1.62,7.64-4.4,10.91s-4.97,8.72-7.45,11.65c-3.84,4.54-13.71,11.82-18.67,16.46s-12.77,15.48-18.61,16.6c-8.5,1.64-20.69-7.97-28.29-11.42-5.06-2.3-29.61-6.39-34.44-5.43-6.79,1.37-7.52,2.03-15.13,2.62-9.2.7-16.85,10.07-21.51,10.75-13.55,1.97-3.73-25.08-.2-31.35,12.54-22.3,31.94-21.27,50.49-31.85,6.66-3.8,14.32-25.03,17.82-32.87,5.59-12.54,10.78-25.45,16.46-38.17,5.36-12.01,11.65-23.61,17.19-35.54,1.37-6.8-13.04-10.19-17.79-9.76-10.52.96-15.97,18.41-25.05,13.51-8.41-4.55-9.97-27.24-5.99-35.09,7.15-14.1,28.98-28.48,44.21-29.66,3.39-.26,14.29.37,17.37,1.04,2.69.57,7.34,5.55,11.87,3.68,2.28-2.26-8.79-12.74-11.44-13.79-7.21-2.86-17.86,3.96-24.58,4.08-2.17.04-3.33-2.01-4.4-1.83-.73.12-2.27,2.31-3.67,3.01-3.63,1.82-14.48,6.01-18.12,6.39-3.43.36-9.12-2.23-7.19-6.54s10.12-11.42,11.38-16.29c1.14-4.39-1.57-7.42.34-11.26,1.21-2.44,12.31-11.64,15.04-13.48,4.83-3.27,23.63-14.13,28.41-15.06,12.58-2.44,39.88-.55,51.78,4.84,15.58,7.07,17.29,24.97,23.29,38.82,20.2,46.61,37.8,94.13,57.38,141.1,4.45,10.68,11.77,30.74,18.33,39.13,8.28,10.59,8.26,4.91,17.72,5.76,3,.27,5.88,2.91,8.41,2.86,3.43-.08,6.4-4.8,10.24-4.81,3.55,0,8.34,3.81,6.53,7.8-.84,1.86-7.67,9.44-9.62,12.33-8.98,13.27-18.14,29.83-29.98,40.59C1071.57,682.59,1068.53,683.66,1068.4,683.89ZM948.49,493.6l-19.02,40.28c.18,2.51,11.26,2.96,13.57,3.01,3,.07,19.6-.22,21.14-.75,4.38-1.49-2.96-12.57-4.22-15.69-2.85-7.07-5.72-18.66-8.96-24.63C950.47,494.84,949.89,493.27,948.49,493.6Z"/></svg><span class="flogo-reg" aria-hidden="true">®</span></div></div>
+    </div>
+    <p class="foot-meta">Florianópolis, Santa Catarina, Brasil · © 2026 NOAHS<sup class="reg">®</sup></p>
   </div>
 </footer>
 
 <script>
+/* posiciona os ícones ~200px acima do NOAHS do palco e sobe os vídeos */
+(function(){var r=document.documentElement,IW=2353,IH=1568,PY=.55,SIGN_TOP=.535,SIGN_BOT=.575;
+var plat=document.querySelector('.platforms'),hero=document.querySelector('.hero'),tick=document.querySelector('.ticker');
+function lay(){var W=innerWidth,H=window.visualViewport?Math.max(innerHeight,visualViewport.height):innerHeight;
+ var s=Math.max(W/IW,H/IH),off=(H-IH*s)*PY,top=off+SIGN_TOP*IH*s,bot=off+SIGN_BOT*IH*s,th=tick.offsetHeight;
+ var gap=Math.min(200,H*.2),ph=plat.offsetHeight;
+ var glow=off+.175*IH*s;r.style.setProperty('--plat-top',Math.max(28,glow-ph-th-14)+'px');
+ r.style.setProperty('--hero-h',Math.min(H-th-56,Math.max(ph+120,bot+H*.2-th))+'px');}
+addEventListener('resize',lay);lay();})();
+/* galeria: navega foto a foto, com volta ao início/fim */
+(function(){var tr=document.querySelector('.g-track'),p=document.querySelector('.g-prev'),n=document.querySelector('.g-next');
+if(!tr||!p||!n)return;
+var imgs=[].slice.call(tr.querySelectorAll('img')),target=null,timer=null;
+function maxS(){return Math.max(0,tr.scrollWidth-tr.clientWidth)}
+function stops(){var m=maxS(),out=[0];imgs.forEach(function(im){var x=im.offsetLeft-tr.offsetLeft-(tr.clientWidth-im.offsetWidth)/2;
+ x=Math.round(Math.min(m,Math.max(0,x)));if(x-out[out.length-1]>8)out.push(x)});if(m-out[out.length-1]>8)out.push(m);return out}
+function step(d){var s=(target!==null)?target:tr.scrollLeft,st=stops(),to;
+ if(d>0){to=st.filter(function(x){return x>s+8})[0];if(to===undefined)to=0}
+ else{var lower=st.filter(function(x){return x<s-8});to=lower.length?lower[lower.length-1]:st[st.length-1]}
+ target=to;tr.scrollTo({left:to,behavior:'smooth'});
+ clearTimeout(timer);timer=setTimeout(function(){target=null},700)}
+p.addEventListener('click',function(e){e.preventDefault();step(-1)});
+n.addEventListener('click',function(e){e.preventDefault();step(1)});
+tr.addEventListener('keydown',function(e){if(e.key==='ArrowRight'){e.preventDefault();step(1)}if(e.key==='ArrowLeft'){e.preventDefault();step(-1)}});
+tr.addEventListener('pointerdown',function(){target=null});
+tr.setAttribute('tabindex','0');tr.setAttribute('aria-label','Galeria de fotos');
+})();
+/* e-mail: cadastro enviado para noahstheband@gmail.com via FormSubmit */
+(function(){var f=document.querySelector('.signup form');if(!f)return;
+var m=document.querySelector('.signup .msg'),i=f.querySelector('input[type=email]'),btn=f.querySelector('button'),sending=false;
+f.addEventListener('submit',function(e){e.preventDefault();if(sending)return;
+ var v=(i.value||'').trim();
+ if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)){m.textContent='Digite um e-mail válido / Enter a valid email';i.focus();return}
+ if(f.querySelector('[name=_honey]').value)return;
+ sending=true;btn.disabled=true;m.textContent='Enviando… / Sending…';
+ fetch('https://formsubmit.co/ajax/noahstheband@gmail.com',{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},
+  body:JSON.stringify({email:v,_subject:'Novo cadastro no site NOAHS',_template:'table',_captcha:'false',origem:'noahs.com.br — Shows / Promos / Notícias'})})
+ .then(function(r){return r.json().catch(function(){return{}}).then(function(j){if(!r.ok||j.success==='false'||j.success===false)throw 0})})
+ .then(function(){m.textContent='Cadastrado! / Signed up!';f.reset()})
+ .catch(function(){m.textContent='Não deu certo, tente de novo / Try again'})
+ .then(function(){sending=false;btn.disabled=false});
+});})();
 (function(){var r=document.documentElement,t;
 function on(){clearTimeout(t);r.classList.add('clicking')}
 function off(){clearTimeout(t);t=setTimeout(function(){r.classList.remove('clicking')},180)}
